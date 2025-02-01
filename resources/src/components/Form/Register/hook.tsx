@@ -1,7 +1,7 @@
 import { env_log, sleep, useAlert, useData, useNotification } from 'fenextjs';
 import { IFormRegister } from './interface';
 import { FormRegisterValidator } from './validator';
-// import { useRouter } from 'next/router';
+import { useNavigate } from "react-router-dom";
 import { URL } from '@/url';
 
 export interface useFormRegisterProps {
@@ -9,7 +9,7 @@ export interface useFormRegisterProps {
 }
 
 export const useFormRegister = ({ defaultValue }: useFormRegisterProps) => {
-    // const router = useRouter();
+    const navigate = useNavigate();
     const { pop } = useNotification({});
     const { setAlert, onClearAlert } = useAlert({});
     const HOOK = useData<IFormRegister>((defaultValue ?? {}) as IFormRegister, {
@@ -34,7 +34,7 @@ export const useFormRegister = ({ defaultValue }: useFormRegisterProps) => {
                 type: 'OK',
             });
             onClearAlert();
-            // router.push(URL.auth.login.index);
+            navigate(URL.auth.login.index);
         },
         onAfterSubmitDataError: () => {
             setAlert({

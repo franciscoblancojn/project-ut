@@ -1,7 +1,7 @@
 import { env_log, sleep, useAlert, useData, useNotification } from 'fenextjs';
 import { IFormChangePassword } from './interface';
 import { FormChangePasswordValidator } from './validator';
-// import { useRouter } from 'next/router';
+import { useNavigate } from "react-router-dom";
 import { URL } from '@/url';
 
 export interface useFormChangePasswordProps {
@@ -11,7 +11,7 @@ export interface useFormChangePasswordProps {
 export const useFormChangePassword = ({
     defaultValue,
 }: useFormChangePasswordProps) => {
-    // const router = useRouter();
+    const navigate = useNavigate();
     const { pop } = useNotification({});
     const { setAlert, onClearAlert } = useAlert({});
     const HOOK = useData<IFormChangePassword>(
@@ -38,7 +38,7 @@ export const useFormChangePassword = ({
                     type: 'OK',
                 });
                 onClearAlert();
-                // router.push(URL.auth.login.index);
+                navigate(URL.auth.login.index);
             },
             onAfterSubmitDataError: () => {
                 setAlert({
