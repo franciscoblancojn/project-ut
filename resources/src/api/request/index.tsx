@@ -26,10 +26,10 @@ export const useRequest = <I, R>({
             method: 'POST',
             ...options,
             headers: {
-                'Accept': 'application/json',
+                Accept: 'application/json',
                 'Content-Type': 'application/json',
                 Authorization: `${user?.token}`,
-                "X-CSRF-TOKEN": `${(document.querySelector(`[name="_token"]`) as HTMLInputElement)?.value}`,
+                'X-CSRF-TOKEN': `${(document.querySelector(`[name="_token"]`) as HTMLInputElement)?.value}`,
                 ...options?.headers,
             },
             body: JSON.stringify(input),

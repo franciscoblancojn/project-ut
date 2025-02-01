@@ -1,4 +1,4 @@
-import { env_log, sleep, useAlert, useData, useNotification } from 'fenextjs';
+import { useAlert, useData, useNotification } from 'fenextjs';
 import { IFormRegister } from './interface';
 import { FormRegisterValidator } from './validator';
 import { useNavigate } from 'react-router-dom';
@@ -13,17 +13,19 @@ export interface useFormRegisterProps {
 
 export const useFormRegister = ({ defaultValue }: useFormRegisterProps) => {
     const navigate = useNavigate();
-        const { mutateAsync: onSubmitData } = useApiRegister({});
+    const { mutateAsync: onSubmitData } = useApiRegister({});
     const { pop } = useNotification({});
-        const { onLogin } = useUser({});
+    const { onLogin } = useUser({});
     const { setAlert, onClearAlert } = useAlert({});
-    const HOOK = useData<IFormRegister,
-            any,
-            IApiResult<useUserDataProps>,
-            any,
-            IApiError>((defaultValue ?? {}) as IFormRegister, {
+    const HOOK = useData<
+        IFormRegister,
+        any,
+        IApiResult<useUserDataProps>,
+        any,
+        IApiError
+    >((defaultValue ?? {}) as IFormRegister, {
         validator: FormRegisterValidator,
-        onSubmitData ,
+        onSubmitData,
         onBeforeSubmitData: ({ isValid }) => {
             if (isValid != true) {
                 setAlert({
@@ -32,7 +34,7 @@ export const useFormRegister = ({ defaultValue }: useFormRegisterProps) => {
                 });
             }
         },
-        onAfterSubmitDataOk: ({result}) => {
+        onAfterSubmitDataOk: ({ result }) => {
             pop({
                 message: 'Registro exitoso',
                 type: 'OK',

@@ -17,7 +17,7 @@ export const AppRouter = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path={URL.home.index}>
-                    <Route index element={<PageHome />} />
+                        <Route index element={<PageHome />} />
                         <Route
                             path={URL.dashboard.index}
                             element={<LayoutAuth />}
