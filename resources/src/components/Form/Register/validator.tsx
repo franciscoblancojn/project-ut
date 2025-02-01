@@ -14,7 +14,7 @@ export const FormRegisterValidator = FenextjsValidator<IFormRegister>()
         password: FenextjsValidator()
             .isString('Contraseña requerida')
             .isRequired('Contraseña requerida')
-            .isMinOrEqual(7, 'La Contraseña es muy corta'),
+            .isMinOrEqual(6, 'La Contraseña es muy corta'),
         repeactPassword: FenextjsValidator().isCompareRef(
             'password',
             'La Contraseña no coincide',

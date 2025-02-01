@@ -25,12 +25,10 @@ class AuthController extends Controller
 
             // Responder con el token
             return [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
                 'token' => $token,
-                'user' => [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'email' => $user->email,
-                ]
             ];
     }
 
@@ -56,7 +54,10 @@ class AuthController extends Controller
             $user_token = $this->onGenerateTokenUser($user);
 
             // Responder con el token y datos del usuario
-            return response()->json($user_token, 200);
+            return response()->json([
+                'message'=>"Ingreso exitoso",
+                'data'=>$user_token
+            ], 200);
 
         } catch (\Throwable $th) {
             return response()->json(['message' => 'Error interno del servidor',"error"=>$th], 500);
@@ -86,7 +87,10 @@ class AuthController extends Controller
             $user_token = $this->onGenerateTokenUser($user);
 
             // Responder con el token y datos del usuario
-            return response()->json($user_token, 200);
+            return response()->json([
+                'message'=>"Registro exitoso",
+                'data'=>$user_token
+            ], 200);
 
         } catch (\Throwable $th) {
             // var_dump($th);

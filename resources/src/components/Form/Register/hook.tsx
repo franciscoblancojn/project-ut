@@ -3,6 +3,9 @@ import { IFormRegister } from './interface';
 import { FormRegisterValidator } from './validator';
 import { useNavigate } from 'react-router-dom';
 import { URL } from '@/url';
+import { useUser, useUserDataProps } from '@/hook/useUser';
+import { useApiRegister } from '@/api/auth/register';
+import { IApiError, IApiResult } from '@/interface/api';
 
 export interface useFormRegisterProps {
     defaultValue?: IFormRegister;
@@ -10,16 +13,17 @@ export interface useFormRegisterProps {
 
 export const useFormRegister = ({ defaultValue }: useFormRegisterProps) => {
     const navigate = useNavigate();
+        const { mutateAsync: onSubmitData } = useApiRegister({});
     const { pop } = useNotification({});
+        const { onLogin } = useUser({});
     const { setAlert, onClearAlert } = useAlert({});
-    const HOOK = useData<IFormRegister>((defaultValue ?? {}) as IFormRegister, {
+    const HOOK = useData<IFormRegister,
+            any,
+            IApiResult<useUserDataProps>,
+            any,
+            IApiError>((defaultValue ?? {}) as IFormRegister, {
         validator: FormRegisterValidator,
-        onSubmitData: async (data) => {
-            env_log(data, {
-                name: 'DATA',
-            });
-            await sleep(2000);
-        },
+        onSubmitData ,
         onBeforeSubmitData: ({ isValid }) => {
             if (isValid != true) {
                 setAlert({
@@ -28,13 +32,14 @@ export const useFormRegister = ({ defaultValue }: useFormRegisterProps) => {
                 });
             }
         },
-        onAfterSubmitDataOk: () => {
+        onAfterSubmitDataOk: ({result}) => {
             pop({
-                message: 'Register exitoso',
+                message: 'Registro exitoso',
                 type: 'OK',
             });
             onClearAlert();
-            navigate(URL.auth.login.index);
+            onLogin(result.data);
+            navigate(URL.home.index);
         },
         onAfterSubmitDataError: () => {
             setAlert({
