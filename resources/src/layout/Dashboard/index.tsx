@@ -17,7 +17,7 @@ export const LayoutDashboard = ({ children }: LayoutDashboardProps) => {
                     useHeaderButtonMenu={true}
                     className="layout-dashboard"
                     menuTop={<HeaderDashboard />}
-                    // menuLeft={<HeaderDashboardLeft />}
+                    menuLeft={<HeaderDashboardLeft />}
                 >
                     <div className="layout-dashboard-content">
                         <Container>{children}</Container>

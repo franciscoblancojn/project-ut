@@ -1,7 +1,7 @@
 import { env_log, sleep, useAlert, useData, useNotification } from 'fenextjs';
 import { IFormRegister } from './interface';
 import { FormRegisterValidator } from './validator';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { URL } from '@/url';
 
 export interface useFormRegisterProps {

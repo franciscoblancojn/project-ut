@@ -12,8 +12,10 @@ export const HeaderLogin = ({}: HeaderLoginProps) => {
         <>
             <Container className="header-login">
                 <Link href={URL.home.index} className="header-login-logo">
-                    <Logo/>
-                    <Title tag="h4" useT={false}>Proyecto UT</Title>
+                    <Logo />
+                    <Title tag="h4" useT={false}>
+                        Proyecto UT
+                    </Title>
                 </Link>
                 <div>
                     <ChangeLang />

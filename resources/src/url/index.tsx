@@ -1,33 +1,33 @@
 export const URL = {
     auth: {
         index: '/auth',
-        path: "auth",
+        path: 'auth',
         login: {
             index: '/auth/login',
-            path: "login"
+            path: 'login',
         },
         register: {
             index: '/auth/register',
-            path: "register"
+            path: 'register',
         },
         'forgot-password': {
             index: '/auth/forgot-password',
-            path: "forgot-password"
+            path: 'forgot-password',
         },
     },
     home: {
         index: '/',
     },
-    dashboard:{
+    dashboard: {
         index: '/dashboard',
-        path: "dashboard",
+        path: 'dashboard',
         user: {
             index: '/dashboard/user/',
-            path: "user",
+            path: 'user',
         },
         client: {
             index: '/dashboard/client/',
-            path: "client",
+            path: 'client',
         },
-    }
+    },
 };

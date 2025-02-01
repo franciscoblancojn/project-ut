@@ -1,7 +1,7 @@
 import { env_log, sleep, useAlert, useData, useNotification } from 'fenextjs';
 import { IFormChangePassword } from './interface';
 import { FormChangePasswordValidator } from './validator';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { URL } from '@/url';
 
 export interface useFormChangePasswordProps {
