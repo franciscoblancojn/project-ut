@@ -4,7 +4,9 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "artisan-serve": "php artisan serve",
+        "-v":"php artisan --version",
+        "restart":"php artisan route:clear && php artisan config:clear && php artisan cache:clear && php artisan view:clear",
+        "serve": "npm run restart && php artisan serve",
         "start": "npm run artisan-serve && npm run dev",
         "sass-min": "sass ./styles/index.scss:./styles/index.css --style compressed",
         "sass": "sass ./styles/index.scss:./styles/index.css",
