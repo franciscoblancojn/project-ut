@@ -1,0 +1,10 @@
+.my-project-user {
+    --fenext-size-user: 2rem;
+    column-gap: 0.5rem;
+    .fenext-user-name {
+        font-size: 0.8rem;
+    }
+    .fenext-user-email {
+        font-size: 0.6rem;
+    }
+}

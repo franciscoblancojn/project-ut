@@ -1,0 +1,26 @@
+.change-lang {
+    align-items: flex-start;
+    padding-block: 1rem;
+    .fenext-content-radio {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        .fenext-input-radio {
+            gap: 0;
+            &-box {
+                display: none;
+            }
+            &:has([checked]) {
+                .fenext-picture {
+                    box-shadow: 0 0 0 3px var(--fenext-color-primary);
+                }
+            }
+        }
+        .fenext-picture {
+            width: 1.5rem;
+            border-radius: 100%;
+            cursor: pointer;
+        }
+    }
+}

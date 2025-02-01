@@ -1,0 +1,12 @@
+.header-dashboard-left {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 1rem;
+    &-menu {
+        padding-block: 1rem;
+    }
+    &-btn-exit {
+        border-radius: 0;
+        margin-top: auto;
+    }
+}

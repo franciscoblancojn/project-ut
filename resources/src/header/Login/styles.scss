@@ -1,0 +1,13 @@
+.header-login {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    &-logo {
+        display: grid;
+        grid-template-columns: 1.5rem 1fr;
+        gap: 0.5rem;
+        align-items: center;
+        text-decoration: none;
+    }
+}

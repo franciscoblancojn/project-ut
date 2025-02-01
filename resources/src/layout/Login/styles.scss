@@ -1,0 +1,22 @@
+.layout-login {
+    .fenext-layout-grid-mt-children {
+        display: grid;
+        &:has(.fenext-layout-grid-alert) {
+            grid-template-rows: auto 1fr;
+        }
+    }
+    &-content {
+        padding-block: 1rem;
+        display: grid;
+        align-items: center;
+        .fenext-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            @media (max-width: 767px) {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}

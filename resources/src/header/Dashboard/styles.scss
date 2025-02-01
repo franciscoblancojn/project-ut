@@ -1,0 +1,31 @@
+.header-dashboard {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+    padding-inline: 1rem;
+    &-logo {
+        display: grid;
+        grid-template-columns: 1.5rem 1fr;
+        gap: 0.5rem;
+        align-items: center;
+        text-decoration: none;
+    }
+    &-dropdown-user {
+        padding-block: 0;
+        &-lang {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        &-body {
+            display: grid;
+            gap: 1rem;
+            min-width: 290px;
+            .change-lang {
+                padding: 0;
+            }
+        }
+    }
+}
