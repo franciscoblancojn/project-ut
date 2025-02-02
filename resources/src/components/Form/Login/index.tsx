@@ -52,11 +52,11 @@ export const FormLogin = ({ ...props }: FormLoginProps) => {
                 <div>
                     <Link href={URL.auth.register.index}>Registrate</Link>
                 </div>
-                <div>
+                {/* <div>
                     <Link href={URL.auth['forgot-password'].index}>
                         Olvidates la Contraseña
                     </Link>
-                </div>
+                </div> */}
             </Form>
         </>
     );

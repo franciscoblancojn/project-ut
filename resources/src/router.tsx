@@ -10,9 +10,10 @@ import { PageForgotPassword } from './pages/auth/forgot-password';
 import { PageUserSingle } from './pages/user/single';
 import { PageTransaction } from './pages/transaction';
 import { PageTransactionSingle } from './pages/transaction/single';
-import { NotificationPop } from 'fenextjs';
+import { NotificationPop, useTheme } from 'fenextjs';
 
 export const AppRouter = () => {
+    useTheme({});
     const queryClient = new QueryClient();
     return (
         <QueryClientProvider client={queryClient}>

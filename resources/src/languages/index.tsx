@@ -8,5 +8,20 @@ export const useLang = () => {
         langs: LIST_LANGS,
         listTranductions: LANGUAGE_LIST,
         defaultLang: 'es',
+        // onNoFoundTranslate: ({ word }) => {
+        //         const n = localStorage?.getItem?.('lang_not');
+        //         let objTra = {};
+        //         try {
+        //             objTra = JSON.parse(n ?? '{}');
+        //         } catch (error) {
+        //             objTra = {};
+        //         }
+        //         objTra[word] = {
+        //             es: `${word}`,
+        //             en: '',
+        //             x: 'x',
+        //         };
+        //         localStorage?.setItem?.('lang_not', JSON.stringify(objTra));
+        // },
     });
 };

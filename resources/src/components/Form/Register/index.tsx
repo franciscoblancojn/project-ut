@@ -66,11 +66,11 @@ export const FormRegister = ({ ...props }: FormRegisterProps) => {
                 <div>
                     <Link href={URL.auth.login.index}>Entrar</Link>
                 </div>
-                <div>
+                {/* <div>
                     <Link href={URL.auth['forgot-password'].index}>
                         Olvidates la Contraseña
                     </Link>
-                </div>
+                </div> */}
             </Form>
         </>
     );
