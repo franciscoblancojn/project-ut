@@ -2,8 +2,8 @@
 
 import { useUser } from '@/hook/useUser';
 import { Button } from '@/ui-fenextjs/Button';
+import { Link } from '@/ui-fenextjs/Link';
 import { URL } from '@/url';
-import { Menu } from 'fenextjs';
 
 export interface HeaderDashboardLeftProps {}
 
@@ -14,18 +14,18 @@ export const HeaderDashboardLeft = ({}: HeaderDashboardLeftProps) => {
         <>
             <div className="header-dashboard-left">
                 <div className="header-dashboard-left-menu">
-                    <Menu
-                        items={[
-                            {
-                                text: 'Dashboard',
-                                url: URL.home.index,
-                            },
-                            {
-                                text: 'Usuarios',
-                                url: URL.dashboard.index,
-                            },
-                        ]}
-                    />
+                    <Link
+                        href={URL.dashboard.index}
+                        className="fenext-menu-item-a"
+                    >
+                        Home
+                    </Link>
+                    <Link
+                        href={URL.dashboard.user.index}
+                        className="fenext-menu-item-a"
+                    >
+                        Usuarios
+                    </Link>
                 </div>
                 <Button
                     onClick={onLogOut}

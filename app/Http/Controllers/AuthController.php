@@ -29,6 +29,8 @@ class AuthController extends Controller
                 'name' => $user->name,
                 'email' => $user->email,
                 'token' => $token,
+                'created_at' =>  $user->created_at,
+                'updated_at' =>  $user->updated_at,
             ];
     }
 
@@ -60,7 +62,10 @@ class AuthController extends Controller
             ], 200);
 
         } catch (\Throwable $th) {
-            return response()->json(['message' => 'Error interno del servidor',"error"=>$th], 500);
+            return response()->json([
+                'message' => 'Error interno del servidor',
+                'error' => $th->getMessage()
+            ], 500);
         }
     }
 
@@ -93,8 +98,10 @@ class AuthController extends Controller
             ], 200);
 
         } catch (\Throwable $th) {
-            // var_dump($th);
-            return response()->json(['message' => 'Error interno del servidor',"error"=>$th], 500);
+            return response()->json([
+                'message' => 'Error interno del servidor',
+                'error' => $th->getMessage()
+            ], 500);
         }
     }
 }

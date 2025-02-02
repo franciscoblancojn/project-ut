@@ -6,12 +6,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    public $timestamps = true;
     /**
      * The attributes that are mass assignable.
      *
@@ -30,7 +32,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -41,8 +42,30 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
+    } 
+    //  /**
+    //  * Mutador para setear la fecha de creación en UTC.
+    //  *
+    //  * @param  mixed  $value
+    //  * @return void
+    //  */
+    // public function setCreatedAtAttribute($value)
+    // {
+    //     // Convierte la fecha a UTC antes de guardarla en la base de datos.
+    //     $this->attributes['created_at'] = Carbon::parse($value)->setTimezone('America/Bogota')->toDateTimeString();
+    // }
+
+    // /**
+    //  * Mutador para setear la fecha de actualización en UTC.
+    //  *
+    //  * @param  mixed  $value
+    //  * @return void
+    //  */
+    // public function setUpdatedAtAttribute($value)
+    // {
+    //     // Convierte la fecha a UTC antes de guardarla en la base de datos.
+    //     $this->attributes['updated_at'] = Carbon::parse($value)->setTimezone('America/Bogota');
+    // }
 }

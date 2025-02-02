@@ -57,10 +57,17 @@ export const TableUser = ({ ...props }: TableUserProps) => {
                     },
                 },
                 {
-                    id: 'createdAt',
+                    id: 'created_at',
                     th: 'Fecha de Creacion',
                     parse: (user) => {
-                        return parseDateTimeFormat_DD_MM_YY(user?.createdAt);
+                        return parseDateTimeFormat_DD_MM_YY(user?.created_at);
+                    },
+                },
+                {
+                    id: 'updated_at',
+                    th: 'Fecha de Actualizacion',
+                    parse: (user) => {
+                        return parseDateTimeFormat_DD_MM_YY(user?.updated_at);
                     },
                 },
             ]}
