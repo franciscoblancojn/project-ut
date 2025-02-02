@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'role'=>"client",
             'amount'=>10000
         ]);
-        for ($i=0; $i < 30; $i++) { 
+        for ($i=0; $i < 21; $i++) { 
             User::create([
                 'name' => 'userClient'.$i,
                 'email' => 'userClient'.$i.'@gmail.com',
@@ -40,8 +40,8 @@ class DatabaseSeeder extends Seeder
             ]);
         }
         $transactionStatus = ['pending','cancel','complete'];
-        for ($i=2; $i <= 32; $i++) { 
-            for ($j=0; $j < 5; $j++) { 
+        for ($i=2; $i <= 21; $i++) { 
+            for ($j=0; $j < 4; $j++) { 
                 $status= $transactionStatus[rand(0,2)];
                 Transaction::create([
                     'price' => rand(500,2000),
