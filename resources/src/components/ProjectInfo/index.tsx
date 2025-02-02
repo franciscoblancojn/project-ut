@@ -29,7 +29,7 @@ export const ProjectInfo = ({ }: ProjectInfoProps) => {
                 </Text>
                 <div>
                     <Text tag="strong" useT={false}>
-                        <Text tag="strong">Usuario</Text> : useAdmin@gmail.com
+                        <Text tag="strong">Usuario</Text> : userAdmin@gmail.com
                     </Text>
                     {' -- '}
                     <Text tag="strong" useT={false}>
@@ -41,7 +41,7 @@ export const ProjectInfo = ({ }: ProjectInfoProps) => {
                 </Text>
                 <div>
                     <Text tag="strong" useT={false}>
-                        <Text tag="strong">Usuario</Text> : useClient@gmail.com
+                        <Text tag="strong">Usuario</Text> : userClient@gmail.com
                     </Text>
                     {' -- '}
                     <Text tag="strong" useT={false}>

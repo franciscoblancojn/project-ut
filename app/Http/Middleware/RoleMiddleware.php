@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RoleMiddleware
 {
-    public function handle(Request $request, Closure $next, $role):Response
+    public function handle(Request $request, Closure $next, $role, $force = false):Response
     {
         try {
             $user = $request->user_token;
@@ -16,7 +16,9 @@ class RoleMiddleware
             }
             if ($user->role != $role){
                 $request->user_id = $user->id;
-                // throw new \Exception('Unauthorized');
+                if($force){
+                    throw new \Exception('Unauthorized');
+                }
             }
     
             return $next($request);

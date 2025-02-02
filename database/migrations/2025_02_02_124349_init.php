@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('role')->default("client");
+            $table->decimal('amount', 10, 2)->default(0);
             $table->timestamps();
         });
     }

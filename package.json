@@ -5,6 +5,7 @@
         "build": "vite build",
         "dev": "vite",
         "-v":"php artisan --version",
+        "db-restart":"php artisan migrate:reset && php artisan migrate && php artisan db:seed",
         "migrate":"php artisan make:migration && php artisan migrate",
         "restart":"php artisan route:clear && php artisan config:clear && php artisan cache:clear && php artisan view:clear",
         "serve": "npm run restart && php artisan serve",
