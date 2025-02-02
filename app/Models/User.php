@@ -45,27 +45,5 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     } 
-    //  /**
-    //  * Mutador para setear la fecha de creación en UTC.
-    //  *
-    //  * @param  mixed  $value
-    //  * @return void
-    //  */
-    // public function setCreatedAtAttribute($value)
-    // {
-    //     // Convierte la fecha a UTC antes de guardarla en la base de datos.
-    //     $this->attributes['created_at'] = Carbon::parse($value)->setTimezone('America/Bogota')->toDateTimeString();
-    // }
-
-    // /**
-    //  * Mutador para setear la fecha de actualización en UTC.
-    //  *
-    //  * @param  mixed  $value
-    //  * @return void
-    //  */
-    // public function setUpdatedAtAttribute($value)
-    // {
-    //     // Convierte la fecha a UTC antes de guardarla en la base de datos.
-    //     $this->attributes['updated_at'] = Carbon::parse($value)->setTimezone('America/Bogota');
-    // }
+    
 }
