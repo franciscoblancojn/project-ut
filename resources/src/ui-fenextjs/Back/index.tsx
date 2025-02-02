@@ -4,11 +4,14 @@ import {
     BackProps as FenextjsBackProps,
     useWindowRouter,
 } from 'fenextjs';
+import { useLang } from '@/languages';
 
 export interface BackProps extends FenextjsBackProps {}
-export const Back = ({ children, className = '', ...props }: BackProps) => {
+export const Back = ({ children = "Atras", className = '', ...props }: BackProps) => {
+    const { onTranslate } = useLang();
     return (
         <FenextjsBack
+            _t={onTranslate}
             className={`my-project-back ${className}`}
             {...props}
             useRouterCustom={useWindowRouter}

@@ -19,6 +19,7 @@ export const PageUserSingle = () => {
         <>
             <LayoutDashboard>
                 <Back />
+                <br />
                 <LayoutSimple loader={isLoading} error={error?.error}>
                     <UserDetails user={user} />
                 </LayoutSimple>
