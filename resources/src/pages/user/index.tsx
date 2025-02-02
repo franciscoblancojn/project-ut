@@ -1,4 +1,4 @@
-import { useQueryUser } from '@/api/client/query';
+import { useQueryUser } from '@/api/user/query';
 import { LayoutDashboard } from '@/layout/Dashboard';
 import { LayoutTable } from '@/layout/Table';
 import { TableUser } from '@/table/user';

@@ -11,6 +11,8 @@ export interface useApiQueryProps<I> {
     input?: I;
     key: string;
     useUserToken?: boolean;
+    usedataFilter?:boolean
+    usepagination?:boolean
 }
 
 export const useApiQuery = <I, R>({
@@ -19,6 +21,8 @@ export const useApiQuery = <I, R>({
     input,
     key,
     useUserToken = true,
+    usedataFilter=true,
+    usepagination=true,
 }: useApiQueryProps<I>) => {
     const { user, load } = useUser({});
     const { data: dataFilter } = useFilter({});
@@ -65,6 +69,10 @@ export const useApiQuery = <I, R>({
         queryHash:
             key +
             '-' +
-            JSON.stringify({ input, dataFilter, user, load, pagination }),
+            JSON.stringify({ input, user, load, 
+                ...(usedataFilter?{dataFilter}:{}),
+                ...(usepagination?{pagination}:{}),
+                
+             }),
     });
 };

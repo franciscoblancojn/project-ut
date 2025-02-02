@@ -25,9 +25,9 @@ export const URL = {
             index: '/dashboard/user/',
             path: 'user',
         },
-        client: {
-            index: '/dashboard/client/',
-            path: 'client',
+        transaction: {
+            index: '/dashboard/transaction/',
+            path: 'transaction',
         },
     },
 };
