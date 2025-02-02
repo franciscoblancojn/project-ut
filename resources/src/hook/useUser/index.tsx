@@ -14,11 +14,7 @@ export const useUser = ({}: useUserProps) => {
         // urlRedirectInLogin: URL.home.index,
         // urlRedirectInLogout:URL.auth.login.index,
         onValidateUser: (user) => {
-            try {
-                return user != undefined && user?.token != undefined;
-            } catch {
-                return false
-            }
+            return user != undefined && user?.token != undefined;
         },
     });
 };
