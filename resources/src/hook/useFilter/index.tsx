@@ -1,10 +1,11 @@
+import { ITransactionStatus } from '@/interface/transaction';
 import {
     useFilter as useFilterFenextjs,
     useFilterProps as useFilterFenextjsProps,
 } from 'fenextjs';
 
 export interface useFilterCustomDataProps {
-    test?: string;
+    ITransactionStatus?: ITransactionStatus;
 }
 
 export interface useFilterProps

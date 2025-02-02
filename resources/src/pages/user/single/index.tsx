@@ -1,6 +1,7 @@
 import { useQueryTransaction } from '@/api/transaction/query';
 import { useQueryUser } from '@/api/user/query';
 import { UserDetails } from '@/components/UserDetails';
+import { FilterITransactionStatus } from '@/filter/ITransactionStatus';
 import { LayoutDashboard } from '@/layout/Dashboard';
 import { LayoutSimple } from '@/layout/Simple';
 import { LayoutTable } from '@/layout/Table';
@@ -43,6 +44,11 @@ export const PageUserSingle = () => {
                         filterDisabled={{
                             search:false
                         }}
+                        extraFilter={
+                            <>
+                               <div> <FilterITransactionStatus/></div>
+                            </>
+                        }
                     >
 
                         <TableTransaction

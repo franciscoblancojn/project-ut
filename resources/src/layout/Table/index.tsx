@@ -9,9 +9,10 @@ export interface LayoutTableProps {
         search?:boolean
         date?:boolean
     }
+    extraFilter?:ReactNode
 }
 
-export const LayoutTable = ({ children, top,filterDisabled }: LayoutTableProps) => {
+export const LayoutTable = ({ children, top,filterDisabled ,extraFilter}: LayoutTableProps) => {
     return (
         <>
             <div className="layout-table">
@@ -23,6 +24,7 @@ export const LayoutTable = ({ children, top,filterDisabled }: LayoutTableProps) 
                     {
                         filterDisabled?.date !== false && <FilterDate />
                     }
+                    {extraFilter}
                     
                 </div>
                 <div className="layout-table-content">{children}</div>

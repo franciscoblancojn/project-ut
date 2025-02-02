@@ -35,8 +35,8 @@ class TransactionController extends Controller
             }
     
             // Filtro por estado de transacción
-            if ($request->has('status') && !empty($request->status)) {
-                $query->where('status', $request->status);
+            if ($request->has('ITransactionStatus') && !empty($request->ITransactionStatus)) {
+                $query->where('status', $request->ITransactionStatus);
             }
     
             if ($request->has('date') && !empty($request->date)) {
