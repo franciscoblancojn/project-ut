@@ -19,11 +19,12 @@ export const AppRouter = () => {
                         <Route index element={<PageHome />} />
                         <Route path={URL.dashboard.index}>
                             <Route index element={<PageHome />} />
-                            <Route
-                                path={URL.dashboard.user.path}
-                            >
+                            <Route path={URL.dashboard.user.path}>
                                 <Route index element={<PageUser />} />
-                                <Route path=':id' element={<PageUserSingle />} />
+                                <Route
+                                    path=":id"
+                                    element={<PageUserSingle />}
+                                />
                             </Route>
                         </Route>
                         <Route path={URL.auth.index}>

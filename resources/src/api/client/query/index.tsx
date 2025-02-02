@@ -3,7 +3,7 @@ import { IApiResultTable } from '@/interface/api';
 import { IUser } from '@/interface/user';
 
 export interface useQueryUserInputProps {
-    id?:string
+    id?: string;
 }
 
 export interface useQueryUserProps {
