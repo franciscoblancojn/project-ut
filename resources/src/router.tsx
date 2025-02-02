@@ -7,6 +7,7 @@ import { PageUser } from './pages/user';
 import { URL } from '@/url';
 import { PageRegister } from './pages/auth/register';
 import { PageForgotPassword } from './pages/auth/forgot-password';
+import { PageUserSingle } from './pages/user/single';
 
 export const AppRouter = () => {
     const queryClient = new QueryClient();
@@ -20,8 +21,10 @@ export const AppRouter = () => {
                             <Route index element={<PageHome />} />
                             <Route
                                 path={URL.dashboard.user.path}
-                                element={<PageUser />}
-                            />
+                            >
+                                <Route index element={<PageUser />} />
+                                <Route path=':id' element={<PageUserSingle />} />
+                            </Route>
                         </Route>
                         <Route path={URL.auth.index}>
                             <Route index element={<PageLogin />} />

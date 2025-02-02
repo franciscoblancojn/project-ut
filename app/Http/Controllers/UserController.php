@@ -13,6 +13,18 @@ class UserController extends Controller
         try {
             $query = User::query();
 
+            // id
+            if ($request->has('id') && !empty($request->id)) {
+                $query->where(function ($q) use ($request) {
+                    $q->where('id', 'like', $request->id);
+                });
+                $request->search = '';
+                $request->date = '';
+                $request->date_end = '';
+                $request->date_start = '';
+                $request->npage = 1;
+                $request->page = 0;
+            }
             // search
             if ($request->has('search') && !empty($request->search)) {
                 $query->where(function ($q) use ($request) {
@@ -25,7 +37,7 @@ class UserController extends Controller
                 $endOfDay = Carbon::parse($request->date)->endOfDay();
                 $query->whereBetween('created_at', [$startOfDay, $endOfDay]);
             }
-            if ($request->has('date_start') && $request->has('date_end')) {
+            if ($request->has('date_start') && !empty($request->date_start) && $request->has('date_end') && !empty($request->date_end)) {
                 $startDate = Carbon::parse($request->date_start)->startOfDay();
                 $endDate = Carbon::parse($request->date_end)->endOfDay();
                 $query->whereBetween('created_at', [$startDate, $endDate]);

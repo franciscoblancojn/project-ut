@@ -12,6 +12,7 @@ export const TableUser = ({ ...props }: TableUserProps) => {
         <Table<IUser>
             name="Useres"
             {...props}
+            useCheckbox={false}
             header={[
                 {
                     id: 'id',
