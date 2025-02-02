@@ -15,13 +15,27 @@ class TransactionController extends Controller
         try {
             $query = Transaction::query();
 
+            // id
+            if ($request->has('id') && !empty($request->id)) {
+                $query->where(function ($q) use ($request) {
+                    $q->where('id', 'like', $request->id);
+                });
+                $request->user_id = '';
+                $request->status = '';
+                $request->search = '';
+                $request->date = '';
+                $request->date_end = '';
+                $request->date_start = '';
+                $request->npage = 1;
+                $request->page = 0;
+            }
             // Filtro por usuario si se proporciona
-            if ($request->has('user_id')) {
+            if ($request->has('user_id') && !empty($request->user_id)) {
                 $query->where('user_id', $request->user_id);
             }
     
             // Filtro por estado de transacción
-            if ($request->has('status')) {
+            if ($request->has('status') && !empty($request->status)) {
                 $query->where('status', $request->status);
             }
     
@@ -31,7 +45,7 @@ class TransactionController extends Controller
                 $query->whereBetween('created_at', [$startOfDay, $endOfDay]);
             }
             // Filtro por rango de fechas de pago
-            if ($request->has('date_start') && $request->has('date_end')) {
+            if ($request->has('date_start') && !empty($request->date_start) && $request->has('date_end') && !empty($request->date_end)) {
                 $startDate = Carbon::parse($request->date_start)->startOfDay();
                 $endDate = Carbon::parse($request->date_end)->endOfDay();
                 $query->whereBetween('payed_at', [$startDate, $endDate]);
@@ -99,7 +113,7 @@ class TransactionController extends Controller
 
         try {
             $transaction = Transaction::findOrFail($id);
-            
+
             $request->validate([
                 'price' => 'numeric|min:0',
                 'status' => 'in:pending,complete,cancel',
