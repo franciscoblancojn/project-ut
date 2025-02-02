@@ -46,7 +46,7 @@ class TransactionController extends Controller
             if ($request->has('date_start') && !empty($request->date_start) && $request->has('date_end') && !empty($request->date_end)) {
                 $startDate = Carbon::parse($request->date_start)->startOfDay();
                 $endDate = Carbon::parse($request->date_end)->endOfDay();
-                $query->whereBetween('payed_at', [$startDate, $endDate]);
+                $query->whereBetween('created_at', [$startDate, $endDate]);
             }
     
             // Paginación

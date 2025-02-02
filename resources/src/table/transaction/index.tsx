@@ -38,7 +38,7 @@ export const TableTransaction = ({ ...props }: TableTransactionProps) => {
                     id: 'price',
                     th: 'Precio',
                     parse: (transaction) => {
-                        return <>{parseNumberCount(transaction?.price)}</>;
+                        return <>${parseNumberCount(transaction?.price)}</>;
                     },
                 },
                 {
