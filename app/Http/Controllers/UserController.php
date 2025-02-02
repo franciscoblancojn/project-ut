@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller; 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+
 
 class UserController extends Controller
 {
+   
     public function getUsers(Request $request)
     {
         try {
@@ -57,7 +61,9 @@ class UserController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Error interno del servidor',
-                'error' => $th->getMessage()
+                'error' => [
+                    'message' => $th->getMessage()
+                ]
             ], 500);
         }
     }

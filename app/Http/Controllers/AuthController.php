@@ -64,7 +64,9 @@ class AuthController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Error interno del servidor',
-                'error' => $th->getMessage()
+                'error' => [
+                    'message' => $th->getMessage()
+                ]
             ], 500);
         }
     }
@@ -100,7 +102,9 @@ class AuthController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Error interno del servidor',
-                'error' => $th->getMessage()
+                'error' => [
+                    'message' => $th->getMessage()
+                ]
             ], 500);
         }
     }
