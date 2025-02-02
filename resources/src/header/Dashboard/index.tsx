@@ -8,11 +8,11 @@ import { Title } from '@/ui-fenextjs/Title';
 import { User } from '@/ui-fenextjs/User';
 import { ButtonMenu, InputSwich, useTheme } from 'fenextjs';
 
-export interface HeaderDashboardProps { }
+export interface HeaderDashboardProps {}
 
-export const HeaderDashboard = ({ }: HeaderDashboardProps) => {
+export const HeaderDashboard = ({}: HeaderDashboardProps) => {
     const { user } = useUser({});
-    const { setTheme, theme } = useTheme({})
+    const { setTheme, theme } = useTheme({});
     return (
         <>
             <div className="header-dashboard">
@@ -25,9 +25,14 @@ export const HeaderDashboard = ({ }: HeaderDashboardProps) => {
                     </div>
                 </ButtonMenu>
                 <div className="header-dashboard-right">
-                    <label className='header-dashboard-right-theme'>
+                    <label className="header-dashboard-right-theme">
                         <Text>Tema oscuro</Text>
-                        <InputSwich value={theme == "dark"} onChange={(e) => { setTheme(e ? "dark" : "light") }} />
+                        <InputSwich
+                            value={theme == 'dark'}
+                            onChange={(e) => {
+                                setTheme(e ? 'dark' : 'light');
+                            }}
+                        />
                     </label>
                     <ChangeLang />
                     <User user={user as any} />

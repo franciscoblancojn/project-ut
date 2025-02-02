@@ -10,7 +10,7 @@ import { InputSwich, useTheme } from 'fenextjs';
 export interface HeaderLoginProps {}
 
 export const HeaderLogin = ({}: HeaderLoginProps) => {
-    const { setTheme, theme } = useTheme({})
+    const { setTheme, theme } = useTheme({});
     return (
         <>
             <Container className="header-login">
@@ -20,14 +20,19 @@ export const HeaderLogin = ({}: HeaderLoginProps) => {
                         Proyecto UT
                     </Title>
                 </Link>
-                
-                                <div className="header-login-right">
-                                    <label className='header-login-right-theme'>
-                                        <Text>Tema oscuro</Text>
-                                        <InputSwich value={theme == "dark"} onChange={(e) => { setTheme(e ? "dark" : "light") }} />
-                                    </label>
-                                    <ChangeLang />
-                                </div>
+
+                <div className="header-login-right">
+                    <label className="header-login-right-theme">
+                        <Text>Tema oscuro</Text>
+                        <InputSwich
+                            value={theme == 'dark'}
+                            onChange={(e) => {
+                                setTheme(e ? 'dark' : 'light');
+                            }}
+                        />
+                    </label>
+                    <ChangeLang />
+                </div>
             </Container>
         </>
     );
