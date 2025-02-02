@@ -12,23 +12,16 @@
         align-items: center;
         text-decoration: none;
     }
-    &-dropdown-user {
-        padding-block: 0;
-        &-lang {
+    &-right{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        &-theme{
             display: flex;
             align-items: center;
-            gap: 1rem;
-            .fenext-container {
-                width: auto;
-                margin: 0;
-            }
-        }
-        &-body {
-            display: grid;
-            gap: 1rem;
-            min-width: 290px;
-            .change-lang {
-                padding: 0;
+            gap: .2rem;
+            .fenext-text{
+                white-space: nowrap;
             }
         }
     }

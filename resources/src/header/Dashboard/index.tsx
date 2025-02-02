@@ -3,16 +3,16 @@
 import { ChangeLang } from '@/components/ChangeLang';
 import { Logo } from '@/components/Logo';
 import { useUser } from '@/hook/useUser';
-import { Button } from '@/ui-fenextjs/Button';
 import { Text } from '@/ui-fenextjs/Text';
 import { Title } from '@/ui-fenextjs/Title';
 import { User } from '@/ui-fenextjs/User';
-import { ButtonMenu, DropDown } from 'fenextjs';
+import { ButtonMenu, InputSwich, useTheme } from 'fenextjs';
 
-export interface HeaderDashboardProps {}
+export interface HeaderDashboardProps { }
 
-export const HeaderDashboard = ({}: HeaderDashboardProps) => {
-    const { user, onLogOut } = useUser({});
+export const HeaderDashboard = ({ }: HeaderDashboardProps) => {
+    const { user } = useUser({});
+    const { setTheme, theme } = useTheme({})
     return (
         <>
             <div className="header-dashboard">
@@ -24,28 +24,13 @@ export const HeaderDashboard = ({}: HeaderDashboardProps) => {
                         </Title>
                     </div>
                 </ButtonMenu>
-                <div>
-                    <DropDown
-                        header={
-                            <>
-                                <User user={user ?? undefined} />
-                            </>
-                        }
-                        className="header-dashboard-dropdown-user"
-                        classNameBody="header-dashboard-dropdown-user-body"
-                    >
-                        <div className="header-dashboard-dropdown-user-lang">
-                            <Text tag="strong">Idiomas</Text>
-                            <ChangeLang />
-                        </div>
-                        <Button
-                            onClick={onLogOut}
-                            full={true}
-                            size="extra-small"
-                        >
-                            Salir
-                        </Button>
-                    </DropDown>
+                <div className="header-dashboard-right">
+                    <label className='header-dashboard-right-theme'>
+                        <Text>Tema oscuro</Text>
+                        <InputSwich value={theme == "dark"} onChange={(e) => { setTheme(e ? "dark" : "light") }} />
+                    </label>
+                    <ChangeLang />
+                    <User user={user as any} />
                 </div>
             </div>
         </>

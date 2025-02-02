@@ -16,6 +16,7 @@ export const AppRouter = () => {
     const queryClient = new QueryClient();
     return (
         <QueryClientProvider client={queryClient}>
+            <div data-fenext-prefers-color-scheme-disabled></div>
             <NotificationPop />
             <BrowserRouter>
                 <Routes>

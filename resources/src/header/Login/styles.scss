@@ -10,4 +10,17 @@
         align-items: center;
         text-decoration: none;
     }
+    &-right{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        &-theme{
+            display: flex;
+            align-items: center;
+            gap: .2rem;
+            .fenext-text{
+                white-space: nowrap;
+            }
+        }
+    }
 }
