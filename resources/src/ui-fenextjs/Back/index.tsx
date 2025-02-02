@@ -7,7 +7,11 @@ import {
 import { useLang } from '@/languages';
 
 export interface BackProps extends FenextjsBackProps {}
-export const Back = ({ children = "Atras", className = '', ...props }: BackProps) => {
+export const Back = ({
+    children = 'Atras',
+    className = '',
+    ...props
+}: BackProps) => {
     const { onTranslate } = useLang();
     return (
         <FenextjsBack
