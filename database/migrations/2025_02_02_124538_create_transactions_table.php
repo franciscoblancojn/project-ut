@@ -16,6 +16,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);  // Para el precio, con dos decimales
             $table->timestamp('payed_at')->nullable();  // Para la fecha de pago
             $table->string('status');  // El estado de la transacción
+            $table->string('reference')->nullable();  
             $table->text('description')->nullable();  // La descripción, puede ser nula
             $table->foreignId('user_id')->constrained()->onDelete('cascade');  // Referencia al usuario
 
