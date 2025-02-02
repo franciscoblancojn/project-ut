@@ -15,9 +15,10 @@ class RoleMiddleware
                 throw new \Exception('Unauthorized');
             }
             if ($user->role != $role){
-                $request->user_id = $user->id;
                 if($force){
                     throw new \Exception('Unauthorized');
+                }else{
+                    $request->user_id = $user->id;
                 }
             }
     

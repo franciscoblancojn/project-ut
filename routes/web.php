@@ -9,6 +9,9 @@ use App\Http\Controllers\UserController;
 Route::get('/api/users', [UserController::class, 'getUsers'])
 ->middleware(TokenMiddleware::class )
 ->middleware(RoleMiddleware::class . ':admin');
+Route::post('/api/users/add-amount', [UserController::class, 'addAmountUsers'])
+->middleware(TokenMiddleware::class )
+->middleware(RoleMiddleware::class . ':admin,true');
 
 
 

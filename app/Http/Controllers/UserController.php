@@ -76,4 +76,37 @@ class UserController extends Controller
             ], 500);
         }
     }
+
+    public function addAmountUsers(Request $request)
+    {
+        try {
+            $request->validate([
+                'id' => 'numeric',
+                'amount' => 'numeric|min:0',
+            ]);
+            if(empty($request->id) || empty($request->amount)){
+                throw new \Exception('Fileds invalid');
+            }
+    
+            $user = User::findOrFail($request->id);
+
+            $amount = (float) ($user->amount ?? 0);
+            $amount += (float) $request->amount;
+            
+            $user->amount = $amount;
+            $user->save();
+    
+            return response()->json([
+                'message' => 'Saldo agregado exitosamente',
+                'data' => $user
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Error interno del servidor',
+                'error' => [
+                    'message' => $th->getMessage()
+                ]
+            ], 500);
+        }
+    }
 }
