@@ -14,5 +14,3 @@ export const PageRegister = () => {
         </>
     );
 };
-
-export default PageRegister;

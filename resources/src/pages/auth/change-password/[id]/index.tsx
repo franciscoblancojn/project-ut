@@ -25,5 +25,3 @@ export const PageChangePassword = () => {
         </>
     );
 };
-
-export default PageChangePassword;

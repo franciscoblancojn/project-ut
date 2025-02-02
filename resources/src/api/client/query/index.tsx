@@ -1,15 +1,15 @@
 import { useApiQuery } from '@/api/query';
 import { IApiResultTable } from '@/interface/api';
-import { IClient } from '@/interface/client';
+import { IUser } from '@/interface/user';
 
-export interface useQueryClientInputProps {}
+export interface useQueryUserInputProps {}
 
-export interface useQueryClientProps {
-    input?: useQueryClientInputProps;
+export interface useQueryUserProps {
+    input?: useQueryUserInputProps;
 }
-export const useQueryClient = ({ input }: useQueryClientProps) => {
-    return useApiQuery<useQueryClientInputProps, IApiResultTable<IClient>>({
-        url: '/api/client/get',
+export const useQueryUser = ({ input }: useQueryUserProps) => {
+    return useApiQuery<useQueryUserInputProps, IApiResultTable<IUser>>({
+        url: '/api/users',
         input,
         key: 'client',
     });

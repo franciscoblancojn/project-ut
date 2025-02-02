@@ -2,12 +2,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PageLogin } from '@/pages/auth/login';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import '../../styles/index.css';
-import PageHome from './pages';
-import PageUser from './pages/user';
-import PageClient from './pages/client';
+import { PageHome } from './pages';
+import { PageUser } from './pages/user';
 import { URL } from '@/url';
-import PageRegister from './pages/auth/register';
-import PageForgotPassword from './pages/auth/forgot-password';
+import { PageRegister } from './pages/auth/register';
+import { PageForgotPassword } from './pages/auth/forgot-password';
 
 export const AppRouter = () => {
     const queryClient = new QueryClient();
@@ -22,10 +21,6 @@ export const AppRouter = () => {
                             <Route
                                 path={URL.dashboard.user.path}
                                 element={<PageUser />}
-                            />
-                            <Route
-                                path={URL.dashboard.client.path}
-                                element={<PageClient />}
                             />
                         </Route>
                         <Route path={URL.auth.index}>

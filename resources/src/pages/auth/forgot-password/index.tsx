@@ -14,5 +14,3 @@ export const PageForgotPassword = () => {
         </>
     );
 };
-
-export default PageForgotPassword;

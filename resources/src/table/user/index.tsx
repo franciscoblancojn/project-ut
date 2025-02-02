@@ -1,28 +1,28 @@
-import { IClient } from '@/interface/client';
+import { IUser } from '@/interface/user';
 import { ITable } from '@/interface/table';
 import { parseDateTimeFormat_DD_MM_YY } from '@/parse/Dates';
 import { Link } from '@/ui-fenextjs/Link';
 import { Table } from '@/ui-fenextjs/Table';
 import { URL } from '@/url';
 
-export interface TableClientProps extends ITable<IClient> {}
+export interface TableUserProps extends ITable<IUser> {}
 
-export const TableClient = ({ ...props }: TableClientProps) => {
+export const TableUser = ({ ...props }: TableUserProps) => {
     return (
-        <Table<IClient>
-            name="Clientes"
+        <Table<IUser>
+            name="Useres"
             {...props}
             header={[
                 {
                     id: 'id',
                     th: 'ID',
-                    parse: (client) => {
+                    parse: (user) => {
                         return (
                             <Link
                                 useT={false}
-                                href={URL.client.index + client.id}
+                                href={URL.dashboard.user.index + user.id}
                             >
-                                {client?.id}
+                                {user?.id}
                             </Link>
                         );
                     },
@@ -30,13 +30,13 @@ export const TableClient = ({ ...props }: TableClientProps) => {
                 {
                     id: 'name',
                     th: 'Nombre',
-                    parse: (client) => {
+                    parse: (user) => {
                         return (
                             <Link
                                 useT={false}
-                                href={URL.client.index + client.id}
+                                href={URL.dashboard.user.index + user.id}
                             >
-                                {client?.name}
+                                {user?.name}
                             </Link>
                         );
                     },
@@ -44,14 +44,14 @@ export const TableClient = ({ ...props }: TableClientProps) => {
                 {
                     id: 'email',
                     th: 'Correo',
-                    parse: (client) => {
+                    parse: (user) => {
                         return (
                             <Link
                                 useT={false}
-                                href={'mailto:' + client.email}
+                                href={'mailto:' + user.email}
                                 target="_blank"
                             >
-                                {client?.email}
+                                {user?.email}
                             </Link>
                         );
                     },
@@ -59,8 +59,8 @@ export const TableClient = ({ ...props }: TableClientProps) => {
                 {
                     id: 'createdAt',
                     th: 'Fecha de Creacion',
-                    parse: (client) => {
-                        return parseDateTimeFormat_DD_MM_YY(client?.createdAt);
+                    parse: (user) => {
+                        return parseDateTimeFormat_DD_MM_YY(user?.createdAt);
                     },
                 },
             ]}
