@@ -17,9 +17,7 @@ class TransactionController extends Controller
 
             // id
             if ($request->has('id') && !empty($request->id)) {
-                $query->where(function ($q) use ($request) {
-                    $q->where('id', 'like', $request->id);
-                });
+                $query->where('id', $request->id);
                 $request->user_id = '';
                 $request->status = '';
                 $request->search = '';
@@ -30,7 +28,7 @@ class TransactionController extends Controller
                 $request->page = 0;
             }
             // Filtro por usuario si se proporciona
-            if ($request->has('user_id') && !empty($request->user_id)) {
+            if (!empty($request->user_id)) {
                 $query->where('user_id', $request->user_id);
             }
     

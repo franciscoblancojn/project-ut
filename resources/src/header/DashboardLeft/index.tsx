@@ -26,6 +26,12 @@ export const HeaderDashboardLeft = ({}: HeaderDashboardLeftProps) => {
                     >
                         Usuarios
                     </Link>
+                    <Link
+                        href={URL.dashboard.transaction.index}
+                        className="fenext-menu-item-a"
+                    >
+                        Transacciones
+                    </Link>
                 </div>
                 <Button
                     onClick={onLogOut}

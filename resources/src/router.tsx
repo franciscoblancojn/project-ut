@@ -8,6 +8,8 @@ import { URL } from '@/url';
 import { PageRegister } from './pages/auth/register';
 import { PageForgotPassword } from './pages/auth/forgot-password';
 import { PageUserSingle } from './pages/user/single';
+import { PageTransaction } from './pages/transaction';
+import { PageTransactionSingle } from './pages/transaction/single';
 
 export const AppRouter = () => {
     const queryClient = new QueryClient();
@@ -24,6 +26,13 @@ export const AppRouter = () => {
                                 <Route
                                     path=":id"
                                     element={<PageUserSingle />}
+                                />
+                            </Route>
+                            <Route path={URL.dashboard.transaction.path}>
+                                <Route index element={<PageTransaction />} />
+                                <Route
+                                    path=":id"
+                                    element={<PageTransactionSingle />}
                                 />
                             </Route>
                         </Route>

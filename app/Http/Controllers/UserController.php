@@ -19,9 +19,7 @@ class UserController extends Controller
 
             // id
             if ($request->has('id') && !empty($request->id)) {
-                $query->where(function ($q) use ($request) {
-                    $q->where('id', 'like', $request->id);
-                });
+                $query->where('id', $request->id);
                 $request->search = '';
                 $request->date = '';
                 $request->date_end = '';
@@ -29,6 +27,17 @@ class UserController extends Controller
                 $request->npage = 1;
                 $request->page = 0;
             }
+            // Filtro por usuario si se proporciona
+            if ( !empty($request->user_id)) {
+                $query->where('id', $request->user_id);
+                $request->search = '';
+                $request->date = '';
+                $request->date_end = '';
+                $request->date_start = '';
+                $request->npage = 1;
+                $request->page = 0;
+            }
+    
             // search
             if ($request->has('search') && !empty($request->search)) {
                 $query->where(function ($q) use ($request) {

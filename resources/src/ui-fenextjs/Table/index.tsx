@@ -5,6 +5,7 @@ import {
 } from 'fenextjs';
 import { useLang } from '@/languages';
 import { ITable } from '@/interface/table';
+import { Text } from '../Text';
 
 export interface TableProps<T>
     extends Omit<FenextjsTableProps<T>, 'items'>,
@@ -21,6 +22,7 @@ export const Table = <T,>({
             _t={onTranslate}
             items={items ?? []}
             {...props}
+            notResult={<Text>No se encontraron resultados</Text>}
         />
     );
 };

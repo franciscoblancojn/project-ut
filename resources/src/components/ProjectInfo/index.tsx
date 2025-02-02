@@ -3,9 +3,9 @@ import { Link } from '@/ui-fenextjs/Link';
 import { Text } from '@/ui-fenextjs/Text';
 import { Title } from '@/ui-fenextjs/Title';
 import { Logo } from '../Logo';
-export interface ProjectInfoProps {}
+export interface ProjectInfoProps { }
 
-export const ProjectInfo = ({}: ProjectInfoProps) => {
+export const ProjectInfo = ({ }: ProjectInfoProps) => {
     return (
         <>
             <div className="project-info">
@@ -24,12 +24,30 @@ export const ProjectInfo = ({}: ProjectInfoProps) => {
                     Es mi primera ves trabajando con Laravel espero les guste mi
                     codigo.
                 </Text>
-                <Text tag="strong" useT={false}>
-                    <Text tag="strong">Usuario</Text> : user@gmail.com
+                <Text>
+                    Pueden usar useAdmin el cual tiene acceso a todos los usuarios y transacciones:
                 </Text>
-                <Text tag="strong" useT={false}>
-                    <Text tag="strong">Contraseña</Text> : user1234
+                <div>
+                    <Text tag="strong" useT={false}>
+                        <Text tag="strong">Usuario</Text> : useAdmin@gmail.com
+                    </Text>
+                    {' -- '}
+                    <Text tag="strong" useT={false}>
+                        <Text tag="strong">Contraseña</Text> : user1234
+                    </Text>
+                </div>
+                <Text>
+                    O usar useClient el cual solo puede acceder a su informacion y sus transacciones
                 </Text>
+                <div>
+                    <Text tag="strong" useT={false}>
+                        <Text tag="strong">Usuario</Text> : useClient@gmail.com
+                    </Text>
+                    {' -- '}
+                    <Text tag="strong" useT={false}>
+                        <Text tag="strong">Contraseña</Text> : user1234
+                    </Text>
+                </div>
                 <Link href={'https://fenextjs-doc.vercel.app'} target="_blank">
                     <Button>
                         Pueden ver Fenextjs(Libreria desarrollada por mi) aqui

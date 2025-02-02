@@ -15,7 +15,8 @@ class RoleMiddleware
                 throw new \Exception('Unauthorized');
             }
             if ($user->role != $role){
-                throw new \Exception('Unauthorized');
+                $request->user_id = $user->id;
+                // throw new \Exception('Unauthorized');
             }
     
             return $next($request);
