@@ -1,4 +1,4 @@
-import {  useData, useNotification } from 'fenextjs';
+import { useData, useNotification } from 'fenextjs';
 import { IFormAddAmountUser } from './interface';
 import { FormAddAmountUserValidator } from './validator';
 import { useApiAddAmountUser } from '@/api/user/addAmount';
@@ -6,10 +6,13 @@ import { IApiError, IApiResult } from '@/interface/api';
 
 export interface useFormAddAmountUserProps {
     defaultValue?: IFormAddAmountUser;
-    onAfterSubmitDataOk?:()=>void
+    onAfterSubmitDataOk?: () => void;
 }
 
-export const useFormAddAmountUser = ({ defaultValue ,onAfterSubmitDataOk}: useFormAddAmountUserProps) => {
+export const useFormAddAmountUser = ({
+    defaultValue,
+    onAfterSubmitDataOk,
+}: useFormAddAmountUserProps) => {
     const { mutateAsync: onSubmitData } = useApiAddAmountUser({});
     const { pop } = useNotification({});
     const HOOK = useData<
@@ -29,12 +32,12 @@ export const useFormAddAmountUser = ({ defaultValue ,onAfterSubmitDataOk}: useFo
                 });
             }
         },
-        onAfterSubmitDataOk: ({  }) => {
+        onAfterSubmitDataOk: ({}) => {
             pop({
                 message: 'Transaccion exitosa',
                 type: 'OK',
             });
-            onAfterSubmitDataOk()
+            onAfterSubmitDataOk();
         },
         onAfterSubmitDataError: () => {
             pop({

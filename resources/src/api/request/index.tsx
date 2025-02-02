@@ -11,7 +11,7 @@ export interface useRequestCallbackProps<R> {
 export interface useRequestProps<R> extends useRequestCallbackProps<R> {
     url: string;
     options?: RequestInit;
-    key:RefreshDataKey
+    key: RefreshDataKey;
 }
 
 export const useRequest = <I, R>({
@@ -19,11 +19,11 @@ export const useRequest = <I, R>({
     onSuccess,
     onError,
     options,
-    key
+    key,
 }: useRequestProps<R>) => {
     const { user } = useUser({});
     const { onApiError } = useApiError({});
-        const { onRefresh }= useRefresh({})
+    const { onRefresh } = useRefresh({});
 
     const onRequest = async (input: I): Promise<IApiResult<R>> => {
         const response = await fetch(url, {
@@ -48,9 +48,9 @@ export const useRequest = <I, R>({
 
     return useMutation<IApiResult<R>, IApiError, I>({
         mutationFn: onRequest,
-        onSuccess : (data)=>{
-            onRefresh([key])
-            onSuccess?.(data)
+        onSuccess: (data) => {
+            onRefresh([key]);
+            onSuccess?.(data);
         },
         onError,
     });

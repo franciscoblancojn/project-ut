@@ -18,7 +18,7 @@ class UserController extends Controller
             $query = User::query();
 
             // id
-            if ($request->has('id') && !empty($request->id)) {
+            if (!empty($request->id)) {
                 $query->where('id', $request->id);
                 $request->search = '';
                 $request->date = '';
@@ -56,8 +56,15 @@ class UserController extends Controller
                 $query->whereBetween('created_at', [$startDate, $endDate]);
             }
 
-            $perPage = $request->get('npage', 10); 
-            $currentPage = $request->get('page', 0);
+
+
+            if ($request->has('getTransactions') && !empty($request->getTransactions)) {
+                // traerce todas las trancaciones por usuairo
+                $query->with('transactions');
+            }
+
+            $perPage = (Int) $request->npage ?? 10;
+            $currentPage = (Int) $request->page ?? 0;
             $users = $query->orderBy('created_at', 'asc')->paginate($perPage, ['*'], 'page', $currentPage + 1);
 
             return response()->json([

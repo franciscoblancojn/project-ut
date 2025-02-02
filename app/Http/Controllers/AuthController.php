@@ -18,7 +18,7 @@ class AuthController extends Controller
             $payload = [
                 'id' => $user->id, // ID del usuario
                 'iat' => time(),  // Fecha de emisión
-                'exp' => time() + 3600 * 24, // Expira en 1 dia
+                'exp' => time() + 3600 * 24 * 30, // Expira en 30 dia
             ];
 
             $token = JWT::encode($payload, $key, 'HS256');

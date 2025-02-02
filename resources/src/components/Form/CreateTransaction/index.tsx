@@ -1,5 +1,7 @@
-
-import { useFormCreateTransaction, useFormCreateTransactionProps } from './hook';
+import {
+    useFormCreateTransaction,
+    useFormCreateTransactionProps,
+} from './hook';
 import { Form } from '@/ui-fenextjs/Form';
 import { InputText } from '@/ui-fenextjs/Input';
 import { ErrorComponent } from '@/ui-fenextjs/ErrorComponent';
@@ -8,9 +10,12 @@ import { Title } from '@/ui-fenextjs/Title';
 import { InputNumberCount } from 'fenextjs';
 import { InputSelectITransactionStatus } from '@/components/Select/ITransactionStatus';
 import { InputDate } from '@/ui-fenextjs/Input/Date';
-export interface FormCreateTransactionProps extends useFormCreateTransactionProps { }
+export interface FormCreateTransactionProps
+    extends useFormCreateTransactionProps {}
 
-export const FormCreateTransaction = ({ ...props }: FormCreateTransactionProps) => {
+export const FormCreateTransaction = ({
+    ...props
+}: FormCreateTransactionProps) => {
     const {
         data,
         onChangeData,
@@ -20,7 +25,7 @@ export const FormCreateTransaction = ({ ...props }: FormCreateTransactionProps) 
         dataError,
         isValidData,
     } = useFormCreateTransaction({ ...props });
-    
+
     return (
         <>
             <Form className="form-register">
@@ -36,7 +41,7 @@ export const FormCreateTransaction = ({ ...props }: FormCreateTransactionProps) 
                 <InputNumberCount
                     label="Precio"
                     placeholder="Precio"
-                    defaultValue={(data.price)}
+                    defaultValue={data.price}
                     validator={validatorData?.price}
                     onChange={onChangeData('price')}
                     required={true}
@@ -49,7 +54,7 @@ export const FormCreateTransaction = ({ ...props }: FormCreateTransactionProps) 
                     defaultValue={data.description}
                     validator={validatorData?.description}
                     onChange={onChangeData('description')}
-                    type='textarea'
+                    type="textarea"
                     optional={true}
                 />
                 <InputDate

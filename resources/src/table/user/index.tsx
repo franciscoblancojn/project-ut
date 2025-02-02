@@ -6,7 +6,7 @@ import { Table } from '@/ui-fenextjs/Table';
 import { URL } from '@/url';
 import { parseNumberCount, SvgEye } from 'fenextjs';
 
-export interface TableUserProps extends ITable<IUser> { }
+export interface TableUserProps extends ITable<IUser> {}
 
 export const TableUser = ({ ...props }: TableUserProps) => {
     return (

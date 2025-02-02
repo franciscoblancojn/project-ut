@@ -50,8 +50,8 @@ class TransactionController extends Controller
             }
     
             // Paginación
-            $perPage = $request->get('npage', 10); 
-            $currentPage = $request->get('page', 0);
+            $perPage = (Int) $request->npage ?? 10;
+            $currentPage = (Int) $request->page ?? 0;
             $transactions = $query->orderBy('created_at', 'asc')->paginate($perPage, ['*'], 'page', $currentPage + 1);
     
             return response()->json([

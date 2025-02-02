@@ -16,7 +16,7 @@ export const AppRouter = () => {
     const queryClient = new QueryClient();
     return (
         <QueryClientProvider client={queryClient}>
-            <NotificationPop/>
+            <NotificationPop />
             <BrowserRouter>
                 <Routes>
                     <Route path={URL.home.index}>

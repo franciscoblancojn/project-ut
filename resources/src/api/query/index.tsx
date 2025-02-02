@@ -29,7 +29,9 @@ export const useApiQuery = <I, R>({
     const { data: dataFilter } = useFilter({});
     const { data: pagination } = usePagination({});
     const { onApiError } = useApiError({});
-    const { data : {[key]:_key}}= useRefresh({})
+    const {
+        data: { [key]: _key },
+    } = useRefresh({});
 
     const onQuery = async (): Promise<IApiResult<R>> => {
         const query = parseInputToQuery({

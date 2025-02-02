@@ -18,17 +18,17 @@ export const PageTransaction = () => {
                             <Text>Aqui puedes gestionar tus transacciones</Text>
                         </>
                     }
-                                            filterDisabled={{
-                                                search: false,
-                                            }}
-                                            extraFilter={
-                                                <>
-                                                    <div>
-                                                        {' '}
-                                                        <FilterITransactionStatus />
-                                                    </div>
-                                                </>
-                                            }
+                    filterDisabled={{
+                        search: false,
+                    }}
+                    extraFilter={
+                        <>
+                            <div>
+                                {' '}
+                                <FilterITransactionStatus />
+                            </div>
+                        </>
+                    }
                 >
                     <TableTransaction
                         items={data?.data.items}

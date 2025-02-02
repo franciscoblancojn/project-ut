@@ -5,7 +5,9 @@ import { ITransaction } from '@/interface/transaction';
 export interface useApiCreateTransactionProps
     extends useRequestCallbackProps<ITransaction> {}
 
-export const useApiCreateTransaction = ({ ...props }: useApiCreateTransactionProps) => {
+export const useApiCreateTransaction = ({
+    ...props
+}: useApiCreateTransactionProps) => {
     return useRequest<IFormCreateTransaction, ITransaction>({
         url: '/api/transaction',
         key: 'transaction',

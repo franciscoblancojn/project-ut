@@ -11,7 +11,7 @@ export const InputDate = ({ className = '', ...props }: InputDateProps) => {
     return (
         <FenextjsInputDate
             className={`my-project-input-text ${className}`}
-            optionalText='(Opcional)'
+            optionalText="(Opcional)"
             _t={onTranslate}
             {...props}
         />

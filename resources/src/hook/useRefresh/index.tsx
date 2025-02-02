@@ -1,18 +1,16 @@
-import { useData } from "fenextjs";
+import { useData } from 'fenextjs';
 
-export type RefreshDataKey = 'users'|"transaction"
+export type RefreshDataKey = 'users' | 'transaction';
 
 export type RefreshData = {
-   [id in RefreshDataKey]?:number
-}
+    [id in RefreshDataKey]?: number;
+};
 
 export interface useRefreshProps {}
 
 export const useRefresh = ({ ...props }: useRefreshProps) => {
     const { data, onConcatData } = useData<RefreshData>(
-        {
-            
-        },
+        {},
         {
             ...props,
             useGlobalContext: `useRefresh`,

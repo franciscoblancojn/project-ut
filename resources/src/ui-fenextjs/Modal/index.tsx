@@ -5,12 +5,6 @@ import {
 } from 'fenextjs';
 
 export interface ModalProps extends FenextjsModalProps {}
-export const Modal = ({
-    ...props
-}: ModalProps) => {
-    return (
-        <FenextjsModal
-            {...props}
-        />
-    );
+export const Modal = ({ ...props }: ModalProps) => {
+    return <FenextjsModal {...props} />;
 };

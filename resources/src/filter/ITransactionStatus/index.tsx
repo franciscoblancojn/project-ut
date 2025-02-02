@@ -5,26 +5,26 @@ import { SvgTrash } from 'fenextjs';
 export interface FilterITransactionStatusProps {}
 
 export const FilterITransactionStatus = ({}: FilterITransactionStatusProps) => {
-    const { onChangeData,data } = useFilter({});
+    const { onChangeData, data } = useFilter({});
     return (
         <>
-            <div className='filter-transaction-status'>
+            <div className="filter-transaction-status">
                 <InputSelectITransactionStatus
                     key={data.ITransactionStatus}
                     onChange={onChangeData('ITransactionStatus')}
                     placeholder="Estado de Transaccion"
                     value={data.ITransactionStatus}
                 />
-                {(data?.ITransactionStatus != undefined) && (
+                {data?.ITransactionStatus != undefined && (
                     <div
                         className={`
                             filter-transaction-status-clear
                         `}
                         onClick={() => {
-                            onChangeData("ITransactionStatus")(undefined);
+                            onChangeData('ITransactionStatus')(undefined);
                         }}
                     >
-                        <SvgTrash/>
+                        <SvgTrash />
                     </div>
                 )}
             </div>

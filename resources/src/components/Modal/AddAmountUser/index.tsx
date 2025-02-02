@@ -1,15 +1,21 @@
-import { FormAddAmountUser, FormAddAmountUserProps } from "@/components/Form/AddAmountUser";
-import { Modal, ModalProps } from "@/ui-fenextjs/Modal";
-import { useModal } from "fenextjs";
+import {
+    FormAddAmountUser,
+    FormAddAmountUserProps,
+} from '@/components/Form/AddAmountUser';
+import { Modal, ModalProps } from '@/ui-fenextjs/Modal';
+import { useModal } from 'fenextjs';
 
-export const NAME = "ModalAddAmountUser";
+export const NAME = 'ModalAddAmountUser';
 
 export interface ModalAddAmountUserProps
-    extends Omit<ModalProps, "children" | "name"> {
-    form?: FormAddAmountUserProps
+    extends Omit<ModalProps, 'children' | 'name'> {
+    form?: FormAddAmountUserProps;
 }
 
-export const ModalAddAmountUser = ({ form, ...props }: ModalAddAmountUserProps) => {
+export const ModalAddAmountUser = ({
+    form,
+    ...props
+}: ModalAddAmountUserProps) => {
     const { onClose, active } = useModal({
         name: NAME,
         activeByNameLocalStorage: true,

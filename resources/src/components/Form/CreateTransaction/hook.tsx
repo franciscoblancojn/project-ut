@@ -1,4 +1,4 @@
-import { useAlert, useData, useNotification } from 'fenextjs';
+import { useData, useNotification } from 'fenextjs';
 import { IFormCreateTransaction } from './interface';
 import { FormCreateTransactionValidator } from './validator';
 import { useApiCreateTransaction } from '@/api/transaction/create';
@@ -7,10 +7,13 @@ import { ITransaction } from '@/interface/transaction';
 
 export interface useFormCreateTransactionProps {
     defaultValue?: IFormCreateTransaction;
-    onAfterSubmitDataOk?:()=>void
+    onAfterSubmitDataOk?: () => void;
 }
 
-export const useFormCreateTransaction = ({ defaultValue ,onAfterSubmitDataOk}: useFormCreateTransactionProps) => {
+export const useFormCreateTransaction = ({
+    defaultValue,
+    onAfterSubmitDataOk,
+}: useFormCreateTransactionProps) => {
     const { mutateAsync: onSubmitData } = useApiCreateTransaction({});
     const { pop } = useNotification({});
     const HOOK = useData<
@@ -30,12 +33,12 @@ export const useFormCreateTransaction = ({ defaultValue ,onAfterSubmitDataOk}: u
                 });
             }
         },
-        onAfterSubmitDataOk: ({  }) => {
+        onAfterSubmitDataOk: ({}) => {
             pop({
                 message: 'Transaccion exitosa',
                 type: 'OK',
             });
-            onAfterSubmitDataOk()
+            onAfterSubmitDataOk();
         },
         onAfterSubmitDataError: () => {
             pop({

@@ -12,11 +12,12 @@ import { TableTransaction } from '@/table/transaction';
 import { Back } from '@/ui-fenextjs/Back';
 import { Button } from '@/ui-fenextjs/Button';
 import { Title } from '@/ui-fenextjs/Title';
+import { ErrorFenextjs } from 'fenextjs';
 import { useParams } from 'react-router-dom';
 
 export const PageUserSingle = () => {
     const { id } = useParams();
-    const { user:userLocal } = useUser({});
+    const { user: userLocal } = useUser({});
     const { data, isLoading, error } = useQueryUser({
         input: {
             id,
@@ -37,52 +38,56 @@ export const PageUserSingle = () => {
             <LayoutDashboard>
                 <Back />
                 <br />
-                <LayoutSimple loader={isLoading} error={error?.error}>
+                <LayoutSimple
+                    loader={isLoading}
+                    error={
+                        error?.error ??
+                        (user == undefined
+                            ? new ErrorFenextjs({ message: 'User not found' })
+                            : undefined)
+                    }
+                >
                     <LayoutTable
                         top={
                             <>
-                                <div className='page-user-single-transaction-top'>
-                                <UserDetails user={user} />
-                                    {
-                                        userLocal?.role === "admin"
-                                        &&
+                                <div className="page-user-single-transaction-top">
+                                    <UserDetails user={user} />
+                                    {userLocal?.role === 'admin' && (
                                         <ModalAddAmountUser
                                             form={{
-                                                defaultValue:{
-                                                    user_id:id
-                                                }
+                                                defaultValue: {
+                                                    user_id: id,
+                                                },
                                             }}
                                             ElementActionModalActive={
                                                 <>
-                                                <Button>
-                                                    Agregar Saldo
-                                                </Button>
+                                                    <Button>
+                                                        Agregar Saldo
+                                                    </Button>
                                                 </>
                                             }
                                         />
-                                    }
+                                    )}
                                 </div>
                                 <br />
-                                <div className='page-user-single-transaction-top'>
+                                <div className="page-user-single-transaction-top">
                                     <Title>Transacciones:</Title>
-                                    {
-                                        userLocal?.role === "admin"
-                                        &&
+                                    {userLocal?.role === 'admin' && (
                                         <ModalCreateTransaction
                                             form={{
-                                                defaultValue:{
-                                                    user_id:id
-                                                }
+                                                defaultValue: {
+                                                    user_id: id,
+                                                },
                                             }}
                                             ElementActionModalActive={
                                                 <>
-                                                <Button>
-                                                    Crear Transaccion
-                                                </Button>
+                                                    <Button>
+                                                        Crear Transaccion
+                                                    </Button>
                                                 </>
                                             }
                                         />
-                                    }
+                                    )}
                                 </div>
                             </>
                         }

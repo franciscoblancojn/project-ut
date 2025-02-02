@@ -3,9 +3,9 @@ import { Link } from '@/ui-fenextjs/Link';
 import { Text } from '@/ui-fenextjs/Text';
 import { Title } from '@/ui-fenextjs/Title';
 import { Logo } from '../Logo';
-export interface ProjectInfoProps { }
+export interface ProjectInfoProps {}
 
-export const ProjectInfo = ({ }: ProjectInfoProps) => {
+export const ProjectInfo = ({}: ProjectInfoProps) => {
     return (
         <>
             <div className="project-info">
@@ -25,7 +25,8 @@ export const ProjectInfo = ({ }: ProjectInfoProps) => {
                     codigo.
                 </Text>
                 <Text>
-                    Pueden usar useAdmin el cual tiene acceso a todos los usuarios y transacciones:
+                    Pueden usar useAdmin el cual tiene acceso a todos los
+                    usuarios y transacciones:
                 </Text>
                 <div>
                     <Text tag="strong" useT={false}>
@@ -37,7 +38,8 @@ export const ProjectInfo = ({ }: ProjectInfoProps) => {
                     </Text>
                 </div>
                 <Text>
-                    O usar useClient el cual solo puede acceder a su informacion y sus transacciones
+                    O usar useClient el cual solo puede acceder a su informacion
+                    y sus transacciones
                 </Text>
                 <div>
                     <Text tag="strong" useT={false}>

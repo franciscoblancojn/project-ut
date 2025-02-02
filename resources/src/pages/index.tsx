@@ -6,11 +6,11 @@ import { LayoutSimple } from '@/layout/Simple';
 import { Title } from '@/ui-fenextjs/Title';
 
 export const PageHome = () => {
-    const { user :userLocal, load} = useUser({})
+    const { user: userLocal, load } = useUser({});
     const { data, isLoading, error } = useQueryUser({
-        input:{
-            id:userLocal?.id
-        }
+        input: {
+            id: userLocal?.id,
+        },
     });
     const user = data?.data?.items?.[0];
     return (

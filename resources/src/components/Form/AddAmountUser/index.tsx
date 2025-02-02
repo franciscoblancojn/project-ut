@@ -1,4 +1,3 @@
-
 import { useFormAddAmountUser, useFormAddAmountUserProps } from './hook';
 import { Form } from '@/ui-fenextjs/Form';
 import { ErrorComponent } from '@/ui-fenextjs/ErrorComponent';
@@ -6,7 +5,7 @@ import { Button } from '@/ui-fenextjs/Button';
 import { Title } from '@/ui-fenextjs/Title';
 import { InputNumberCount } from 'fenextjs';
 
-export interface FormAddAmountUserProps extends useFormAddAmountUserProps { }
+export interface FormAddAmountUserProps extends useFormAddAmountUserProps {}
 
 export const FormAddAmountUser = ({ ...props }: FormAddAmountUserProps) => {
     const {
@@ -17,8 +16,8 @@ export const FormAddAmountUser = ({ ...props }: FormAddAmountUserProps) => {
         loaderSubmit,
         dataError,
         isValidData,
-    } = useFormAddAmountUser({ ...props });;
-    
+    } = useFormAddAmountUser({ ...props });
+
     return (
         <>
             <Form className="form-register">
@@ -26,7 +25,7 @@ export const FormAddAmountUser = ({ ...props }: FormAddAmountUserProps) => {
                 <InputNumberCount
                     label="Saldo a agregar"
                     placeholder="Saldo a agregar"
-                    defaultValue={(data.amount)}
+                    defaultValue={data.amount}
                     validator={validatorData?.amount}
                     onChange={onChangeData('amount')}
                     required={true}

@@ -1,15 +1,21 @@
-import { FormCreateTransaction, FormCreateTransactionProps } from "@/components/Form/CreateTransaction";
-import { Modal, ModalProps } from "@/ui-fenextjs/Modal";
-import { useModal } from "fenextjs";
+import {
+    FormCreateTransaction,
+    FormCreateTransactionProps,
+} from '@/components/Form/CreateTransaction';
+import { Modal, ModalProps } from '@/ui-fenextjs/Modal';
+import { useModal } from 'fenextjs';
 
-export const NAME = "ModalCreateTransaction";
+export const NAME = 'ModalCreateTransaction';
 
 export interface ModalCreateTransactionProps
-    extends Omit<ModalProps, "children" | "name"> {
-    form?: FormCreateTransactionProps
+    extends Omit<ModalProps, 'children' | 'name'> {
+    form?: FormCreateTransactionProps;
 }
 
-export const ModalCreateTransaction = ({ form, ...props }: ModalCreateTransactionProps) => {
+export const ModalCreateTransaction = ({
+    form,
+    ...props
+}: ModalCreateTransactionProps) => {
     const { onClose, active } = useModal({
         name: NAME,
         activeByNameLocalStorage: true,
