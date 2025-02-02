@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -50,12 +51,15 @@ class AuthController extends Controller
 
             // Verificar si el usuario existe y la contraseña es válida
             if (!$user || !Hash::check($credentials['password'], $user->password)) {
-                return response()->json(['message' => 'Credenciales inválidas'], 401);
+                throw new \Exception('Credenciales inválidas');
             }
 
             // Generar el token y usuario de retorno
             $user_token = $this->onGenerateTokenUser($user);
 
+            $user_log = $user_token;
+            unset($user_log['token']);
+            Log::info('Ingreso exitoso',$user_log);
             // Responder con el token y datos del usuario
             return response()->json([
                 'message'=>"Ingreso exitoso",
@@ -63,12 +67,14 @@ class AuthController extends Controller
             ], 200);
 
         } catch (\Throwable $th) {
-            return response()->json([
+            $err = [
                 'message' => 'Error interno del servidor',
                 'error' => [
                     'message' => $th->getMessage()
                 ]
-            ], 500);
+            ];
+            Log::error('Ingreso fallido',$err);
+            return response()->json($err, 500);
         }
     }
 
@@ -94,6 +100,9 @@ class AuthController extends Controller
             // Generar el token y usuario de retorno
             $user_token = $this->onGenerateTokenUser($user);
 
+            $user_log = $user_token;
+            unset($user_log['token']);
+            Log::info('Registro exitoso',$user_log);
             // Responder con el token y datos del usuario
             return response()->json([
                 'message'=>"Registro exitoso",
@@ -101,12 +110,14 @@ class AuthController extends Controller
             ], 200);
 
         } catch (\Throwable $th) {
-            return response()->json([
+            $err = [
                 'message' => 'Error interno del servidor',
                 'error' => [
                     'message' => $th->getMessage()
                 ]
-            ], 500);
+            ];
+            Log::error('Registro fallido',$err);
+            return response()->json($err, 500);
         }
     }
 }

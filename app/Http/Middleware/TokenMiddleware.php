@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class TokenMiddleware
 {
@@ -29,12 +30,14 @@ class TokenMiddleware
             $request->user_token = $user;
             return $next($request);
         } catch (\Throwable $th) {
-            return response()->json([
+            $err = [
                 'message' => 'Error interno del servidor',
                 'error' => [
                     'message' => $th->getMessage()
                 ]
-            ], 500);
+            ];
+            Log::error('TokenMiddleware',$err);
+            return response()->json($err, 500);
         }
     }
 }

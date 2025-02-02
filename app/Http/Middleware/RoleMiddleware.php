@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Log;
 
 class RoleMiddleware
 {
@@ -24,12 +25,14 @@ class RoleMiddleware
     
             return $next($request);
         } catch (\Throwable $th) {
-            return response()->json([
+            $err = [
                 'message' => 'Error interno del servidor',
                 'error' => [
                     'message' => $th->getMessage()
                 ]
-            ], 500);
+            ];
+            Log::error('RoleMiddleware',$err);
+            return response()->json($err, 500);
         }
 
     }

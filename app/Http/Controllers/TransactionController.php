@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class TransactionController extends Controller
 {
@@ -54,20 +55,26 @@ class TransactionController extends Controller
             $currentPage = (Int) $request->page ?? 0;
             $transactions = $query->orderBy('created_at', 'asc')->paginate($perPage, ['*'], 'page', $currentPage + 1);
     
-            return response()->json([
-                'message' => 'Transacciones encontradas',
-                'data' => [
+            $result = [
+                'message'=>"Transacciones encontradas",
+                'data'=> [
                     'items' => $transactions->items(),
                     'count' => $transactions->total(),
                 ]
-            ]);
+            ];
+
+            Log::info($result['message'],$result['data']);
+    
+            return response()->json($result);
         } catch (\Throwable $th) {
-            return response()->json([
+            $err = [
                 'message' => 'Error interno del servidor',
                 'error' => [
                     'message' => $th->getMessage()
                 ]
-            ], 500);
+            ];
+            Log::error('getTransactions',$err);
+            return response()->json($err, 500);
         }
 
        
@@ -92,17 +99,25 @@ class TransactionController extends Controller
                 'payed_at' => $request->payed_at ,
             ]);
     
-            return response()->json([
-                'message' => 'Transacción creada exitosamente',
-                'data' => $transaction
-            ], 201);
+            $result = [
+                'message'=>"Transacción creada exitosament",
+                'data' => [
+                    'id'=>$transaction->id
+                ]
+            ];
+
+            Log::info($result['message'],$result['data']);
+    
+            return response()->json($result,201);
         } catch (\Throwable $th) {
-            return response()->json([
+            $err = [
                 'message' => 'Error interno del servidor',
                 'error' => [
                     'message' => $th->getMessage()
                 ]
-            ], 500);
+            ];
+            Log::error('postTransactions',$err);
+            return response()->json($err, 500);
         }
     }
 

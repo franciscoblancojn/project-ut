@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 
 class UserController extends Controller
@@ -67,20 +68,27 @@ class UserController extends Controller
             $currentPage = (Int) $request->page ?? 0;
             $users = $query->orderBy('created_at', 'asc')->paginate($perPage, ['*'], 'page', $currentPage + 1);
 
-            return response()->json([
+
+            $result = [
                 'message'=>"User finded",
                 'data'=> [
                     'items' => $users->items(),
                     'count' => $users->total(),
                 ]
-            ]);
+            ];
+
+            Log::info($result['message'],$result['data']);
+
+            return response()->json($result);
         } catch (\Throwable $th) {
-            return response()->json([
+            $err = [
                 'message' => 'Error interno del servidor',
                 'error' => [
                     'message' => $th->getMessage()
                 ]
-            ], 500);
+            ];
+            Log::error('Ingreso fallido',$err);
+            return response()->json($err, 500);
         }
     }
 
@@ -102,18 +110,28 @@ class UserController extends Controller
             
             $user->amount = $amount;
             $user->save();
+            
+
+            $result = [
+                'message'=>"Saldo agregado exitosamente",
+                'data'=> [
+                    'user_id' => $request->user_id,
+                    'amount' => $amount,
+                ]
+            ];
+
+            Log::info($result['message'],$result['data']);
     
-            return response()->json([
-                'message' => 'Saldo agregado exitosamente',
-                'data' => $user
-            ]);
+            return response()->json($result);
         } catch (\Throwable $th) {
-            return response()->json([
+            $err = [
                 'message' => 'Error interno del servidor',
                 'error' => [
                     'message' => $th->getMessage()
                 ]
-            ], 500);
+            ];
+            Log::error('addAmountUsers',$err);
+            return response()->json($err, 500);
         }
     }
 }

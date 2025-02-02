@@ -9,5 +9,6 @@ export const useApiLogin = ({ ...props }: useApiLoginProps) => {
     return useRequest<IFormLogin, useUserDataProps>({
         url: '/api/auth/login',
         ...props,
+        key:"users"
     });
 };

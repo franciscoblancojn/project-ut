@@ -4,6 +4,14 @@
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Middleware\TokenMiddleware;
 
+use App\Http\Controllers\LogController;
+
+Route::get('/api/logs', [LogController::class, 'getLogs'])
+->middleware(TokenMiddleware::class )
+->middleware(RoleMiddleware::class . ':admin,true');
+
+
+
 use App\Http\Controllers\UserController;
 
 Route::get('/api/users', [UserController::class, 'getUsers'])

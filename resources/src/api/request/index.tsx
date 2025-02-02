@@ -2,7 +2,7 @@ import { RefreshDataKey, useRefresh } from '@/hook/useRefresh';
 import { useUser } from '@/hook/useUser';
 import { IApiError, IApiResult } from '@/interface/api';
 import { useMutation } from '@tanstack/react-query';
-import { useApiError } from 'fenextjs';
+import { ErrorFenextjs, useApiError } from 'fenextjs';
 
 export interface useRequestCallbackProps<R> {
     onSuccess?: (data: IApiResult<R>) => void;
@@ -40,8 +40,14 @@ export const useRequest = <I, R>({
         });
         const data = await response.json();
         if (data?.error) {
-            onApiError(data);
-            throw data;
+            const err = {
+                ...data,
+                error: new ErrorFenextjs({
+                    message: data?.error?.message ?? data?.error ?? '',
+                }),
+            };
+            onApiError(err);
+            throw err;
         }
         return data;
     };
