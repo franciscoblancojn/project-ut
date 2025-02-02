@@ -8,6 +8,7 @@ import {
 import { Link } from '@/ui-fenextjs/Link';
 import { Text } from '@/ui-fenextjs/Text';
 import { Title } from '@/ui-fenextjs/Title';
+import { parseNumberCount } from 'fenextjs';
 
 export interface UserDetailsProps {
     user: IUser;
@@ -19,6 +20,8 @@ export const UserDetails = ({ user }: UserDetailsProps) => {
             <div className="user-details">
                 <Title>Usuario:</Title>
                 <Title>#{user?.id}</Title>
+                <Title>Saldo:</Title>
+                <Title>${parseNumberCount(user?.amount)}</Title>
                 <Text tag="strong">Nombre :</Text>
                 <Text useT={false}>{user?.name}</Text>
 
