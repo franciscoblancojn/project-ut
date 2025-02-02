@@ -40,6 +40,9 @@ export const PageUserSingle = () => {
                                 <Title>Transacciones:</Title>
                             </>
                         }
+                        filterDisabled={{
+                            search:false
+                        }}
                     >
 
                         <TableTransaction

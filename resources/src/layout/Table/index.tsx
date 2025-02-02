@@ -4,16 +4,26 @@ import { ReactNode } from 'react';
 export interface LayoutTableProps {
     top?: ReactNode;
     children?: ReactNode;
+
+    filterDisabled?:{
+        search?:boolean
+        date?:boolean
+    }
 }
 
-export const LayoutTable = ({ children, top }: LayoutTableProps) => {
+export const LayoutTable = ({ children, top,filterDisabled }: LayoutTableProps) => {
     return (
         <>
             <div className="layout-table">
                 {top && <div className="layout-table-top">{top}</div>}
                 <div className="layout-table-filter">
-                    <FilterSearch />
-                    <FilterDate />
+                    {
+                        filterDisabled?.search !== false && <FilterSearch />
+                    }
+                    {
+                        filterDisabled?.date !== false && <FilterDate />
+                    }
+                    
                 </div>
                 <div className="layout-table-content">{children}</div>
             </div>

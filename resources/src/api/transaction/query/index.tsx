@@ -13,7 +13,7 @@ export interface useQueryTransactionProps extends Pick<useApiQueryProps<useQuery
 export const useQueryTransaction = ({ ...props }: useQueryTransactionProps) => {
     return useApiQuery<useQueryTransactionInputProps, IApiResultTable<ITransaction>>({
         ...props,
-        url: '/api/users',
-        key: 'users',
+        url: '/api/transaction',
+        key: 'transaction',
     });
 };
