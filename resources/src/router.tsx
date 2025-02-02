@@ -4,7 +4,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import '../../styles/index.css';
 import PageHome from './pages';
 import PageUser from './pages/user';
-import { LayoutAuth } from './layout/Auth';
 import PageClient from './pages/client';
 import { URL } from '@/url';
 import PageRegister from './pages/auth/register';
@@ -18,10 +17,7 @@ export const AppRouter = () => {
                 <Routes>
                     <Route path={URL.home.index}>
                         <Route index element={<PageHome />} />
-                        <Route
-                            path={URL.dashboard.index}
-                            element={<LayoutAuth />}
-                        >
+                        <Route path={URL.dashboard.index}>
                             <Route index element={<PageHome />} />
                             <Route
                                 path={URL.dashboard.user.path}

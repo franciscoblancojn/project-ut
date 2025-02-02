@@ -41,9 +41,7 @@ export const useFormLogin = ({ defaultValue }: useFormLoginProps) => {
             });
             onClearAlert();
             onLogin(result.data);
-            if (window.location.pathname == URL.auth.login.index) {
-                navigate(URL.home.index);
-            }
+            navigate(URL.home.index);
         },
         onAfterSubmitDataError: () => {
             setAlert({

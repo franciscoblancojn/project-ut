@@ -9,6 +9,7 @@ export interface HeaderDashboardLeftProps {}
 
 export const HeaderDashboardLeft = ({}: HeaderDashboardLeftProps) => {
     const { onLogOut } = useUser({});
+
     return (
         <>
             <div className="header-dashboard-left">
@@ -21,15 +22,7 @@ export const HeaderDashboardLeft = ({}: HeaderDashboardLeftProps) => {
                             },
                             {
                                 text: 'Usuarios',
-                                url: URL.user.index,
-                            },
-                            {
-                                text: 'Clientes',
-                                url: URL.client.index,
-                            },
-                            {
-                                text: 'Productos',
-                                url: URL.product.index,
+                                url: URL.dashboard.index,
                             },
                         ]}
                     />

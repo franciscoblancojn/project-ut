@@ -1,9 +1,9 @@
 'use client';
 
 import { ChangeLang } from '@/components/ChangeLang';
+import { Logo } from '@/components/Logo';
 import { useUser } from '@/hook/useUser';
 import { Button } from '@/ui-fenextjs/Button';
-import { Img } from '@/ui-fenextjs/Img';
 import { Text } from '@/ui-fenextjs/Text';
 import { Title } from '@/ui-fenextjs/Title';
 import { User } from '@/ui-fenextjs/User';
@@ -18,8 +18,10 @@ export const HeaderDashboard = ({}: HeaderDashboardProps) => {
             <div className="header-dashboard">
                 <ButtonMenu>
                     <div className="header-dashboard-logo">
-                        <Img src="https://fenextjs-doc.vercel.app/favicon.png" />
-                        <Title tag="h4">Fenextjs</Title>
+                        <Logo />
+                        <Title tag="h4" useT={false}>
+                            Proyecto UT
+                        </Title>
                     </div>
                 </ButtonMenu>
                 <div>
