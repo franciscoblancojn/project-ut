@@ -8,7 +8,7 @@ import { URL } from '@/url';
 export interface HeaderDashboardLeftProps {}
 
 export const HeaderDashboardLeft = ({}: HeaderDashboardLeftProps) => {
-    const { onLogOut } = useUser({});
+    const { onLogOut ,user} = useUser({});
 
     return (
         <>
@@ -18,14 +18,20 @@ export const HeaderDashboardLeft = ({}: HeaderDashboardLeftProps) => {
                         href={URL.dashboard.index}
                         className="fenext-menu-item-a"
                     >
-                        Home
+                        Perfil
                     </Link>
-                    <Link
-                        href={URL.dashboard.user.index}
-                        className="fenext-menu-item-a"
-                    >
-                        Usuarios
-                    </Link>
+                    {
+                        user?.role === "admin"
+                        &&
+                        <>
+                            <Link
+                                href={URL.dashboard.user.index}
+                                className="fenext-menu-item-a"
+                            >
+                                Usuarios
+                            </Link>
+                        </>
+                    }
                     <Link
                         href={URL.dashboard.transaction.index}
                         className="fenext-menu-item-a"

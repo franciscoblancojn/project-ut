@@ -1,4 +1,5 @@
 import { useFilter } from '@/hook/useFilter';
+import { useRefresh } from '@/hook/useRefresh';
 import { useUser } from '@/hook/useUser';
 import { IApiError, IApiResult } from '@/interface/api';
 import { parseInputToQuery } from '@/parse/Input';
@@ -28,6 +29,7 @@ export const useApiQuery = <I, R>({
     const { data: dataFilter } = useFilter({});
     const { data: pagination } = usePagination({});
     const { onApiError } = useApiError({});
+    const { data : {[key]:_key}}= useRefresh({})
 
     const onQuery = async (): Promise<IApiResult<R>> => {
         const query = parseInputToQuery({
@@ -72,6 +74,7 @@ export const useApiQuery = <I, R>({
             key +
             '-' +
             JSON.stringify({
+                _key,
                 input,
                 user,
                 load,

@@ -13,6 +13,7 @@ export const InputText = ({ className = '', ...props }: InputTextProps) => {
             className={`my-project-input-text ${className}`}
             _t={onTranslate}
             {...props}
+            optionalText='(Opcional)'
         />
     );
 };

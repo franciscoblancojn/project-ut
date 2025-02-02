@@ -1,17 +1,21 @@
 import { useQueryTransaction } from '@/api/transaction/query';
 import { useQueryUser } from '@/api/user/query';
+import { ModalCreateTransaction } from '@/components/Modal/CreateTransaction';
 import { UserDetails } from '@/components/UserDetails';
 import { FilterITransactionStatus } from '@/filter/ITransactionStatus';
+import { useUser } from '@/hook/useUser';
 import { LayoutDashboard } from '@/layout/Dashboard';
 import { LayoutSimple } from '@/layout/Simple';
 import { LayoutTable } from '@/layout/Table';
 import { TableTransaction } from '@/table/transaction';
 import { Back } from '@/ui-fenextjs/Back';
+import { Button } from '@/ui-fenextjs/Button';
 import { Title } from '@/ui-fenextjs/Title';
 import { useParams } from 'react-router-dom';
 
 export const PageUserSingle = () => {
     const { id } = useParams();
+    const { user:userLocal } = useUser({});
     const { data, isLoading, error } = useQueryUser({
         input: {
             id,
@@ -38,7 +42,27 @@ export const PageUserSingle = () => {
                             <>
                                 <UserDetails user={user} />
                                 <br />
-                                <Title>Transacciones:</Title>
+                                <div className='page-user-single-transaction-top'>
+                                    <Title>Transacciones:</Title>
+                                    {
+                                        userLocal?.role === "admin"
+                                        &&
+                                        <ModalCreateTransaction
+                                        form={{
+                                            defaultValue:{
+                                                user_id:id
+                                            }
+                                        }}
+                                            ElementActionModalActive={
+                                                <>
+                                                <Button>
+                                                    Crear Transaccion
+                                                </Button>
+                                                </>
+                                            }
+                                        />
+                                    }
+                                </div>
                             </>
                         }
                         filterDisabled={{

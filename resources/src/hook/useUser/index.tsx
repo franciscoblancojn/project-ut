@@ -1,10 +1,8 @@
 // import { URL } from '@/url';
+import { IUser } from '@/interface/user';
 import { ImgProps, useUser as useUserFenextjs } from 'fenextjs';
 
-export interface useUserDataProps {
-    id: string;
-    name: string;
-    email: string;
+export interface useUserDataProps extends IUser {
     img?: ImgProps;
     token: string;
 }

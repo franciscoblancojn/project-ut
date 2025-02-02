@@ -10,7 +10,7 @@ export interface ITransaction {
     payed_at?: string;
     status: ITransactionStatus;
     description?: string;
-    user_id: number;
+    user_id: string;
     created_at: string;
     updated_at: string;
 }

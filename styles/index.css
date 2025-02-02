@@ -7444,4 +7444,12 @@ body:has(.fenext-input-radio-input-id-fenext-swich-view-fenext-swich-view-select
   max-height: 100%;
 }
 
+.page-user-single-transaction-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 /*# sourceMappingURL=index.css.map */

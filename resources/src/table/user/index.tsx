@@ -4,9 +4,9 @@ import { parseDateTimeFormat_DD_MM_YY } from '@/parse/Dates';
 import { Link } from '@/ui-fenextjs/Link';
 import { Table } from '@/ui-fenextjs/Table';
 import { URL } from '@/url';
-import { SvgEye } from 'fenextjs';
+import { parseNumberCount, SvgEye } from 'fenextjs';
 
-export interface TableUserProps extends ITable<IUser> {}
+export interface TableUserProps extends ITable<IUser> { }
 
 export const TableUser = ({ ...props }: TableUserProps) => {
     return (
@@ -24,7 +24,7 @@ export const TableUser = ({ ...props }: TableUserProps) => {
                                 useT={false}
                                 href={URL.dashboard.user.index + user.id}
                             >
-                                <SvgEye/>
+                                <SvgEye />
                             </Link>
                         );
                     },
@@ -70,6 +70,13 @@ export const TableUser = ({ ...props }: TableUserProps) => {
                                 {user?.email}
                             </Link>
                         );
+                    },
+                },
+                {
+                    id: 'amount',
+                    th: 'Saldo',
+                    parse: (transaction) => {
+                        return <>${parseNumberCount(transaction?.amount)}</>;
                     },
                 },
                 {
