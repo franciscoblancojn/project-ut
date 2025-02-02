@@ -5,6 +5,9 @@ import { ITransactionStatus } from '@/interface/transaction';
 export const FormCreateTransactionValidator = FenextjsValidator<IFormCreateTransaction>()
     .setName('FormCreateTransaction')
     .isObject({
+        user_id: FenextjsValidator()
+            .isString( 'User ID requerido')
+            .isRequired('User ID requerido'),
         price: FenextjsValidator()
             .isNumber('Precio requerido')
             .isMin(0, 'Precio requerido')

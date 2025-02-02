@@ -81,14 +81,14 @@ class UserController extends Controller
     {
         try {
             $request->validate([
-                'id' => 'numeric',
+                'user_id' => 'numeric',
                 'amount' => 'numeric|min:0',
             ]);
-            if(empty($request->id) || empty($request->amount)){
+            if(empty($request->user_id) || empty($request->amount)){
                 throw new \Exception('Fileds invalid');
             }
     
-            $user = User::findOrFail($request->id);
+            $user = User::findOrFail($request->user_id);
 
             $amount = (float) ($user->amount ?? 0);
             $amount += (float) $request->amount;

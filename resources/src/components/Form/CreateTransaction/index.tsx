@@ -20,7 +20,6 @@ export const FormCreateTransaction = ({ ...props }: FormCreateTransactionProps) 
         dataError,
         isValidData,
     } = useFormCreateTransaction({ ...props });
-    console.log({data});
     
     return (
         <>

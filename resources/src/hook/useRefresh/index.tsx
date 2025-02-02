@@ -1,7 +1,9 @@
 import { useData } from "fenextjs";
 
-export interface RefreshData {
-   [id : string]:number
+export type RefreshDataKey = 'users'|"transaction"
+
+export type RefreshData = {
+   [id in RefreshDataKey]?:number
 }
 
 export interface useRefreshProps {}

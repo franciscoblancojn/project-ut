@@ -1,5 +1,5 @@
 import { useFilter } from '@/hook/useFilter';
-import { useRefresh } from '@/hook/useRefresh';
+import { RefreshDataKey, useRefresh } from '@/hook/useRefresh';
 import { useUser } from '@/hook/useUser';
 import { IApiError, IApiResult } from '@/interface/api';
 import { parseInputToQuery } from '@/parse/Input';
@@ -10,7 +10,7 @@ export interface useApiQueryProps<I> {
     url: string;
     options?: RequestInit;
     input?: I;
-    key: string;
+    key: RefreshDataKey;
     useUserToken?: boolean;
     usedataFilter?: boolean;
     usepagination?: boolean;

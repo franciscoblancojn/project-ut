@@ -1,5 +1,6 @@
 import { useQueryTransaction } from '@/api/transaction/query';
 import { useQueryUser } from '@/api/user/query';
+import { ModalAddAmountUser } from '@/components/Modal/AddAmountUser';
 import { ModalCreateTransaction } from '@/components/Modal/CreateTransaction';
 import { UserDetails } from '@/components/UserDetails';
 import { FilterITransactionStatus } from '@/filter/ITransactionStatus';
@@ -40,7 +41,27 @@ export const PageUserSingle = () => {
                     <LayoutTable
                         top={
                             <>
+                                <div className='page-user-single-transaction-top'>
                                 <UserDetails user={user} />
+                                    {
+                                        userLocal?.role === "admin"
+                                        &&
+                                        <ModalAddAmountUser
+                                            form={{
+                                                defaultValue:{
+                                                    user_id:id
+                                                }
+                                            }}
+                                            ElementActionModalActive={
+                                                <>
+                                                <Button>
+                                                    Agregar Saldo
+                                                </Button>
+                                                </>
+                                            }
+                                        />
+                                    }
+                                </div>
                                 <br />
                                 <div className='page-user-single-transaction-top'>
                                     <Title>Transacciones:</Title>
@@ -48,11 +69,11 @@ export const PageUserSingle = () => {
                                         userLocal?.role === "admin"
                                         &&
                                         <ModalCreateTransaction
-                                        form={{
-                                            defaultValue:{
-                                                user_id:id
-                                            }
-                                        }}
+                                            form={{
+                                                defaultValue:{
+                                                    user_id:id
+                                                }
+                                            }}
                                             ElementActionModalActive={
                                                 <>
                                                 <Button>

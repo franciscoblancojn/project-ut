@@ -1,4 +1,4 @@
-import { useRefresh } from '@/hook/useRefresh';
+import { RefreshDataKey, useRefresh } from '@/hook/useRefresh';
 import { useUser } from '@/hook/useUser';
 import { IApiError, IApiResult } from '@/interface/api';
 import { useMutation } from '@tanstack/react-query';
@@ -11,7 +11,7 @@ export interface useRequestCallbackProps<R> {
 export interface useRequestProps<R> extends useRequestCallbackProps<R> {
     url: string;
     options?: RequestInit;
-    key:string
+    key:RefreshDataKey
 }
 
 export const useRequest = <I, R>({
