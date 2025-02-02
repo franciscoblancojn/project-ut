@@ -5,8 +5,12 @@ import {
 } from 'fenextjs';
 import { useLang } from '@/languages';
 
-export interface InputSelectMultipleTProps<T> extends FenextjsInputSelectMultipleTProps<T> {}
-export const InputSelectMultipleT = <T,>({ className = '', ...props }: InputSelectMultipleTProps<T>) => {
+export interface InputSelectMultipleTProps<T>
+    extends FenextjsInputSelectMultipleTProps<T> {}
+export const InputSelectMultipleT = <T,>({
+    className = '',
+    ...props
+}: InputSelectMultipleTProps<T>) => {
     const { onTranslate } = useLang();
     return (
         <FenextjsInputSelectMultipleT<T>

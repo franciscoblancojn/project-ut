@@ -1,12 +1,16 @@
-import { ITransactionStatus } from "@/interface/transaction";
-import { parseITransactionStatus } from "@/parse/ITransactionStatus";
-import { InputSelectMultipleT, InputSelectMultipleTProps } from "@/ui-fenextjs/Input/SelectMultipleT";
-import { InputSelectT, InputSelectTProps } from "@/ui-fenextjs/Input/SelectT";
-
+import { ITransactionStatus } from '@/interface/transaction';
+import { parseITransactionStatus } from '@/parse/ITransactionStatus';
+import {
+    InputSelectMultipleT,
+    InputSelectMultipleTProps,
+} from '@/ui-fenextjs/Input/SelectMultipleT';
+import { InputSelectT, InputSelectTProps } from '@/ui-fenextjs/Input/SelectT';
 
 export interface InputSelectITransactionStatusProps
-    extends Omit<InputSelectTProps<ITransactionStatus>, "options" | "onParse" >
-         {}
+    extends Omit<
+        InputSelectTProps<ITransactionStatus>,
+        'options' | 'onParse'
+    > {}
 
 export const InputSelectITransactionStatus = ({
     ...props
@@ -17,7 +21,7 @@ export const InputSelectITransactionStatus = ({
                 {...props}
                 options={Object.values(ITransactionStatus)}
                 onParse={(e) => ({
-                    id: e ?? "",
+                    id: e ?? '',
                     text: parseITransactionStatus(e),
                     data: e,
                 })}
@@ -28,10 +32,9 @@ export const InputSelectITransactionStatus = ({
 
 export interface InputSelectMultipleITransactionStatusProps
     extends Omit<
-            InputSelectMultipleTProps<ITransactionStatus>,
-            "options" | "onParse" 
-        >
-        {}
+        InputSelectMultipleTProps<ITransactionStatus>,
+        'options' | 'onParse'
+    > {}
 
 export const InputSelectMultipleITransactionStatus = ({
     ...props
@@ -42,7 +45,7 @@ export const InputSelectMultipleITransactionStatus = ({
                 {...props}
                 options={Object.values(ITransactionStatus)}
                 onParse={(e) => ({
-                    id: e ?? "",
+                    id: e ?? '',
                     text: parseITransactionStatus(e),
                     data: e,
                 })}

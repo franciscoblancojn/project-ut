@@ -16,14 +16,14 @@ export const PageUserSingle = () => {
         input: {
             id,
         },
-        usedataFilter:false,
-        usepagination:false
+        usedataFilter: false,
+        usepagination: false,
     });
     const QueryTransaction = useQueryTransaction({
         input: {
-            user_id: id
-        }
-    })
+            user_id: id,
+        },
+    });
 
     const user = data?.data?.items?.[0];
 
@@ -42,15 +42,17 @@ export const PageUserSingle = () => {
                             </>
                         }
                         filterDisabled={{
-                            search:false
+                            search: false,
                         }}
                         extraFilter={
                             <>
-                               <div> <FilterITransactionStatus/></div>
+                                <div>
+                                    {' '}
+                                    <FilterITransactionStatus />
+                                </div>
                             </>
                         }
                     >
-
                         <TableTransaction
                             items={QueryTransaction?.data?.data.items}
                             nItems={QueryTransaction?.data?.data.count}

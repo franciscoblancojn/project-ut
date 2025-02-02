@@ -24,7 +24,10 @@ export const TableTransaction = ({ ...props }: TableTransactionProps) => {
                         return (
                             <Link
                                 useT={false}
-                                href={URL.dashboard.transaction.index + transaction.id}
+                                href={
+                                    URL.dashboard.transaction.index +
+                                    transaction.id
+                                }
                             >
                                 {transaction?.id}
                             </Link>
@@ -35,18 +38,18 @@ export const TableTransaction = ({ ...props }: TableTransactionProps) => {
                     id: 'price',
                     th: 'Precio',
                     parse: (transaction) => {
-                        return (
-                            <>
-                                {parseNumberCount(transaction?.price)}
-                            </>
-                        );
+                        return <>{parseNumberCount(transaction?.price)}</>;
                     },
                 },
                 {
                     id: 'payed_at',
                     th: 'Fecha de Pago',
                     parse: (transaction) => {
-                        return transaction?.payed_at ? parseDateTimeFormat_DD_MM_YY(transaction?.payed_at) : <Text tag='strong'>No pagado</Text> ;
+                        return transaction?.payed_at ? (
+                            parseDateTimeFormat_DD_MM_YY(transaction?.payed_at)
+                        ) : (
+                            <Text tag="strong">No pagado</Text>
+                        );
                     },
                 },
                 {
@@ -54,7 +57,7 @@ export const TableTransaction = ({ ...props }: TableTransactionProps) => {
                     th: 'Estado',
                     parse: (transaction) => {
                         return (
-                            <TransactionStatus status={transaction?.status}/>
+                            <TransactionStatus status={transaction?.status} />
                         );
                     },
                 },
@@ -66,14 +69,18 @@ export const TableTransaction = ({ ...props }: TableTransactionProps) => {
                     id: 'created_at',
                     th: 'Fecha de Creacion',
                     parse: (transaction) => {
-                        return parseDateTimeFormat_DD_MM_YY(transaction?.created_at);
+                        return parseDateTimeFormat_DD_MM_YY(
+                            transaction?.created_at,
+                        );
                     },
                 },
                 {
                     id: 'updated_at',
                     th: 'Fecha de Actualizacion',
                     parse: (transaction) => {
-                        return parseDateTimeFormat_DD_MM_YY(transaction?.updated_at);
+                        return parseDateTimeFormat_DD_MM_YY(
+                            transaction?.updated_at,
+                        );
                     },
                 },
             ]}

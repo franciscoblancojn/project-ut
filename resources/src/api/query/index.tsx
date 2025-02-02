@@ -11,8 +11,8 @@ export interface useApiQueryProps<I> {
     input?: I;
     key: string;
     useUserToken?: boolean;
-    usedataFilter?:boolean
-    usepagination?:boolean
+    usedataFilter?: boolean;
+    usepagination?: boolean;
 }
 
 export const useApiQuery = <I, R>({
@@ -21,8 +21,8 @@ export const useApiQuery = <I, R>({
     input,
     key,
     useUserToken = true,
-    usedataFilter=true,
-    usepagination=true,
+    usedataFilter = true,
+    usepagination = true,
 }: useApiQueryProps<I>) => {
     const { user, load } = useUser({});
     const { data: dataFilter } = useFilter({});
@@ -45,12 +45,14 @@ export const useApiQuery = <I, R>({
         });
         const data = await response.json();
         if (data?.error) {
-            const err =  {
+            const err = {
                 ...data,
-                error: new ErrorFenextjs({message:data?.error?.message ?? data?.error ?? ''})
+                error: new ErrorFenextjs({
+                    message: data?.error?.message ?? data?.error ?? '',
+                }),
             };
             onApiError(err);
-            throw  err
+            throw err;
         }
         return data;
     };
@@ -69,10 +71,12 @@ export const useApiQuery = <I, R>({
         queryHash:
             key +
             '-' +
-            JSON.stringify({ input, user, load, 
-                ...(usedataFilter?{dataFilter}:{}),
-                ...(usepagination?{pagination}:{}),
-                
-             }),
+            JSON.stringify({
+                input,
+                user,
+                load,
+                ...(usedataFilter ? { dataFilter } : {}),
+                ...(usepagination ? { pagination } : {}),
+            }),
     });
 };
