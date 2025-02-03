@@ -1,5 +1,5 @@
 # Usa una imagen oficial de PHP
-FROM php:8.1-fpm
+FROM php:8.2-fpm
 
 # Instala las dependencias necesarias para Laravel y Vite
 RUN apt-get update && apt-get install -y \
