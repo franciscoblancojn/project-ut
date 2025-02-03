@@ -42,11 +42,11 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
 RUN npm install --force
 
 # Prepara los assets de Vite
-RUN npm run build
+# RUN npm run build
 
 
 # Inicia el servidor de Laravel y el servidor de Vite
-CMD composer install --no-dev --optimize-autoloader && php artisan serve --host=0.0.0.0 --port=8000 
+CMD composer install --no-dev --optimize-autoloader && php artisan optimize:clear && npm run build && php artisan config:clear && php artisan cache:clear && php artisan view:clear && php artisan serve --host=0.0.0.0 --port=8000 
 
 
 
