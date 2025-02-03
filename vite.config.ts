@@ -32,6 +32,8 @@
 import { defineConfig, loadEnv } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
+import mkcert from 'vite-plugin-mkcert';
+import basicSsl from '@vitejs/plugin-basic-ssl';
 import path from 'path';
 
 export default ({ mode }: any) => {
@@ -39,12 +41,17 @@ export default ({ mode }: any) => {
     return defineConfig({
         base: '/',
         server: {
-          https: true,
+            https: true,
         },
         preview: {
-          https: true,
+            https: true,
         },
-        plugins: [laravel(['resources/src/app.tsx']), react()],
+        plugins: [
+            laravel(['resources/src/app.tsx']),
+            react(),
+            mkcert(),
+            basicSsl(),
+        ],
         resolve: {
             alias: {
                 // "@/*": "/resources/src/*",
@@ -57,5 +64,6 @@ export default ({ mode }: any) => {
                 env: ENV,
             },
         },
+        build: {},
     });
 };
