@@ -31,7 +31,7 @@ bun i
 ```
 - Instalar dependecias de composer
 ```bash
-composer install --no-autoloader --no-scripts
+composer install
 ```
 - Crear archivo .env y configurarlo 
 - Configura permisos de vendor
