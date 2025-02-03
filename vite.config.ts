@@ -51,7 +51,7 @@ export default ({ mode }: any) => {
         },
         plugins: [
             laravel({
-                input: [ 'resources/js/app.js'],
+                input: ['resources/src/app.tsx'],
                 refresh: true,
             }),
             react(),
