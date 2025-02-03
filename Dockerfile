@@ -20,13 +20,19 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Establece el directorio de trabajo
 WORKDIR /app_project
 
-# Copia el resto del código
 COPY . /app_project
+
 
 RUN chown -R www-data:www-data /app_project
 
 # Instala las dependencias de Laravel
 RUN composer install --no-autoloader --no-scripts
+
+RUN chmod -R 755 vendor
+
+
+COPY vendor /app_project/vendor
+
 
 
 # Instala Node.js, Yarn y otras herramientas necesarias para Vite

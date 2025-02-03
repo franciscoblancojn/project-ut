@@ -34,6 +34,10 @@ bun i
 composer install --no-autoloader --no-scripts
 ```
 - Crear archivo .env y configurarlo 
+- Configura permisos de vendor
+```bash
+chmod -R 755 vendor
+```
 - Correr Proyecto
 ```bash
 npm run start
