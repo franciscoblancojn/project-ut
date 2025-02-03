@@ -20,8 +20,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos composer.json y composer.lock
+# Copia los archivos composer.json y composer.lock primero
 COPY composer.json composer.lock /app/
+
+RUN chown -R www-data:www-data /app
 
 # Instala las dependencias de Laravel
 RUN composer install --no-autoloader --no-scripts
