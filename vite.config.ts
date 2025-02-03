@@ -38,6 +38,12 @@ export default ({ mode }: any) => {
     const ENV = { ...process.env, ...loadEnv(mode, process.cwd()) };
     return defineConfig({
         base: '/',
+        server: {
+          https: true,
+        },
+        preview: {
+          https: true,
+        },
         plugins: [laravel(['resources/src/app.tsx']), react()],
         resolve: {
             alias: {
