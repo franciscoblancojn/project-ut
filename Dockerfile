@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     libssl-dev \
+    php-pgsql \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd \
     && docker-php-ext-install pdo pdo_mysql
@@ -44,11 +45,13 @@ RUN npm install --force
 # Prepara los assets de Vite
 RUN npm run build
 
+# Expone el puerto que usa Laravel
+EXPOSE 8000
 
 # Inicia el servidor de Laravel y el servidor de Vite
-CMD composer install --no-dev --optimize-autoloader  && php artisan serve --host=0.0.0.0 --port=8000 
+CMD composer install --no-dev --optimize-autoloader && php artisan migrate && php artisan serve --host=0.0.0.0 --port=8000 
 
 
 
 # Expone el puerto que usa Laravel
-EXPOSE 8000
+# EXPOSE 8000
