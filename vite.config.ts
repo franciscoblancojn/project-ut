@@ -43,12 +43,6 @@ export default ({ mode }: any) => {
         build: {
             manifest: true, // Usa un manifiesto para rutas correctas
         },
-        server: {
-            https: true,
-        },
-        preview: {
-            https: true,
-        },
         plugins: [
             laravel({
                 input: ['resources/src/app.tsx'],
@@ -70,6 +64,5 @@ export default ({ mode }: any) => {
                 env: ENV,
             },
         },
-        build: {},
     });
 };
