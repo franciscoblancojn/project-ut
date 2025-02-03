@@ -9,6 +9,7 @@ Es mi primera ves trabajando con Laravel espero les guste mi codigo.
 Pueden usar useAdmin el cual tiene acceso a todos los usuarios y transacciones:
 
 Usuario : userAdmin@gmail.com -- Contraseña : user1234
+
 O usar useClient el cual solo puede acceder a su informacion y sus transacciones
 
 Usuario : userClient@gmail.com -- Contraseña : user1234
