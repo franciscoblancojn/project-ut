@@ -25,11 +25,12 @@ COPY composer.json composer.lock /app/
 
 RUN chown -R www-data:www-data /app
 
-# Instala las dependencias de Laravel
-RUN composer install --no-autoloader --no-scripts
 
 # Copia el resto del código
 COPY . /app
+
+# Instala las dependencias de Laravel
+RUN composer install --no-autoloader --no-scripts
 
 # Instala Node.js, Yarn y otras herramientas necesarias para Vite
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
