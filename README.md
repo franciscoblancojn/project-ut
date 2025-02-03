@@ -44,3 +44,8 @@ npm run start
 ```
 - Abrir pagina en:
 http://localhost:8000/
+
+
+# Postman
+
+Dentro del proyecto hay un archivo llamado Project UT.postman_collection.json, puedes usarlo para ejecutar peticiones al back despuede correr npm run start
