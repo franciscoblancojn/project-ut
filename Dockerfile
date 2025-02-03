@@ -35,7 +35,7 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
     && npm install -g yarn
 
 # Instala las dependencias de Node.js (Vite)
-RUN yarn install
+RUN npm install --force
 
 # Prepara los assets de Vite
 RUN npm run build
