@@ -47,4 +47,4 @@ RUN npm run build
 EXPOSE 8000
 
 # Inicia el servidor de Laravel y el servidor de Vite
-CMD php artisan serve --host=0.0.0.0 && npm run dev
+CMD npm run start
