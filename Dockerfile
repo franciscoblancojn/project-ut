@@ -1,5 +1,5 @@
 # Usa una imagen oficial de PHP
-FROM php:8.2-fpm
+FROM php:8.3-fpm
 
 # Instala las dependencias necesarias para Laravel y Vite
 RUN apt-get update && apt-get install -y \
@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Instala Node.js, Yarn y otras herramientas necesarias para Vite
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_18.20.2 | bash - \
     && apt-get install -y nodejs \
     && npm install -g yarn
 
@@ -35,7 +35,7 @@ RUN composer install --no-autoloader --no-scripts
 COPY . /app
 
 # Instala las dependencias de Node.js (Vite)
-RUN yarn install
+RUN npm install
 
 # Prepara los assets de Vite
 RUN npm run build
