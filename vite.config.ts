@@ -18,7 +18,6 @@
 //     },
 // });
 
-
 // import { defineConfig } from 'vite';
 // import laravel from 'laravel-vite-plugin';
 
@@ -30,34 +29,27 @@
 //         }),
 //     ],
 // });
-import { defineConfig ,loadEnv} from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
 import path from 'path';
- 
+
 export default ({ mode }: any) => {
     const ENV = { ...process.env, ...loadEnv(mode, process.cwd()) };
     return defineConfig({
-    server:{
-        https:true
-    },
-    plugins: [
-        laravel([
-            'resources/src/app.tsx',
-        ]),
-        react(),
-    ],
-    resolve: {
-        alias: {
-            // "@/*": "/resources/src/*",
-            '@': path.resolve(__dirname, 'resources/src'), 
+        base: '/',
+        plugins: [laravel(['resources/src/app.tsx']), react()],
+        resolve: {
+            alias: {
+                // "@/*": "/resources/src/*",
+                '@': path.resolve(__dirname, 'resources/src'),
+            },
         },
-    },
-    define: {
-      "process.env": ENV,
-      process: {
-        env: ENV,
-      },
-    },
-})
-}
+        define: {
+            'process.env': ENV,
+            process: {
+                env: ENV,
+            },
+        },
+    });
+};
