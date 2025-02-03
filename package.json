@@ -4,6 +4,7 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
+        "docker":"sudo docker build -t project-ut .",
         "-v": "php artisan --version",
         "db-restart": "php artisan migrate:reset && php artisan migrate && php artisan db:seed",
         "migrate": "php artisan make:migration && php artisan migrate",

@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Instala Node.js, Yarn y otras herramientas necesarias para Vite
-RUN curl -sL https://deb.nodesource.com/setup_18.20.2 | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g yarn
 
