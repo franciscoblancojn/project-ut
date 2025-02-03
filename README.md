@@ -42,3 +42,5 @@ chmod -R 755 vendor
 ```bash
 npm run start
 ```
+- Abrir pagina en:
+http://localhost:8000/
