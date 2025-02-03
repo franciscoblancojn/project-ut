@@ -38,6 +38,9 @@ import path from 'path';
 export default ({ mode }: any) => {
     const ENV = { ...process.env, ...loadEnv(mode, process.cwd()) };
     return defineConfig({
+    server:{
+        https:true
+    },
     plugins: [
         laravel([
             'resources/src/app.tsx',
