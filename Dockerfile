@@ -17,11 +17,6 @@ RUN apt-get update && apt-get install -y \
 # Instala Composer (gestor de dependencias de PHP)
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Instala Node.js, Yarn y otras herramientas necesarias para Vite
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g yarn
-
 # Establece el directorio de trabajo
 WORKDIR /app
 
@@ -34,8 +29,13 @@ RUN composer install --no-autoloader --no-scripts
 # Copia el resto del código
 COPY . /app
 
+# Instala Node.js, Yarn y otras herramientas necesarias para Vite
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g yarn
+
 # Instala las dependencias de Node.js (Vite)
-RUN npm install
+RUN yarn install
 
 # Prepara los assets de Vite
 RUN npm run build
