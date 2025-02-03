@@ -44,7 +44,7 @@ RUN npm install --force
 RUN npm run build
 
 # Expone el puerto que usa Laravel
-EXPOSE 80
+EXPOSE 8000
 
 # Inicia el servidor de Laravel y el servidor de Vite
 CMD php artisan serve
