@@ -26,6 +26,7 @@ WORKDIR /app_project
 RUN chown -R www-data:www-data /app_project
 
 # Instala las dependencias de Laravel
+COPY composer.json composer.lock ./
 RUN composer install --no-autoloader --no-scripts
 
 RUN chmod -R 755 vendor
@@ -47,5 +48,6 @@ RUN npm run build
 EXPOSE 8000
 
 # Inicia el servidor de Laravel y el servidor de Vite
-CMD php artisan serve --host=0.0.0.0 --port=8000 & npm run dev
+CMD composer install --no-dev --optimize-autoloader && php artisan serve --host=0.0.0.0 --port=8000 & npm run dev
+
 
