@@ -40,6 +40,9 @@ export default ({ mode }: any) => {
     const ENV = { ...process.env, ...loadEnv(mode, process.cwd()) };
     return defineConfig({
         base: '/',
+        build: {
+            manifest: true, // Usa un manifiesto para rutas correctas
+        },
         server: {
             https: true,
         },
@@ -47,7 +50,10 @@ export default ({ mode }: any) => {
             https: true,
         },
         plugins: [
-            laravel(['resources/src/app.tsx']),
+            laravel({
+                input: ['resources/css/app.css', 'resources/js/app.js'],
+                refresh: true,
+            }),
             react(),
             mkcert(),
             basicSsl(),
