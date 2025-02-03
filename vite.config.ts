@@ -40,9 +40,6 @@ export default ({ mode }: any) => {
     const ENV = { ...process.env, ...loadEnv(mode, process.cwd()) };
     return defineConfig({
         base: '/',
-        build: {
-            manifest: true, // Usa un manifiesto para rutas correctas
-        },
         plugins: [
             laravel({
                 input: ['resources/src/app.tsx'],
