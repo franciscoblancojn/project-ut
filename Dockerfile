@@ -17,10 +17,10 @@ RUN apt-get update && apt-get install -y \
 # Instala Composer (gestor de dependencias de PHP)
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+COPY . /app_project
+
 # Establece el directorio de trabajo
 WORKDIR /app_project
-
-COPY . /app_project
 
 
 RUN chown -R www-data:www-data /app_project
@@ -29,9 +29,6 @@ RUN chown -R www-data:www-data /app_project
 RUN composer install --no-autoloader --no-scripts
 
 RUN chmod -R 755 vendor
-
-
-COPY vendor /app_project/vendor
 
 
 
@@ -47,7 +44,7 @@ RUN npm install --force
 RUN npm run build
 
 # Expone el puerto que usa Laravel
-EXPOSE 80
+EXPOSE 8000
 
 # Inicia el servidor de Laravel y el servidor de Vite
 CMD php artisan serve --host=0.0.0.0 && npm run dev
