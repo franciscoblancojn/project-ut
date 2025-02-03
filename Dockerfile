@@ -45,7 +45,7 @@ RUN npm install --force
 RUN npm run build
 
 # Expone el puerto que usa Laravel
-EXPOSE 8000
+# EXPOSE 8000
 
 # Inicia el servidor de Laravel y el servidor de Vite
 CMD composer install --no-dev --optimize-autoloader && php artisan migrate && php artisan serve --host=0.0.0.0 --port=8000 
@@ -53,4 +53,4 @@ CMD composer install --no-dev --optimize-autoloader && php artisan migrate && ph
 
 
 # Expone el puerto que usa Laravel
-# EXPOSE 8000
+EXPOSE 8000
