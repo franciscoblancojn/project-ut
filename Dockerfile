@@ -18,19 +18,12 @@ RUN apt-get update && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Establece el directorio de trabajo
-WORKDIR /app
+WORKDIR .
 
-# Copia los archivos composer.json y composer.lock primero
-COPY composer.json composer.lock /app/
-
-RUN chown -R www-data:www-data /app
-
-
-# Copia el resto del código
-COPY . /app
 
 # Instala las dependencias de Laravel
 RUN composer install --no-autoloader --no-scripts
+
 
 # Instala Node.js, Yarn y otras herramientas necesarias para Vite
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
